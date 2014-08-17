@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		42BE9306C051469DA9559016 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B20D85CE3AC647209454ADCD /* libPods.a */; };
+		C751BD0F199FC67C00EC7FD6 /* VBFPopFlatButton.m in Sources */ = {isa = PBXBuildFile; fileRef = C751BD0D199FC67C00EC7FD6 /* VBFPopFlatButton.m */; };
+		C751BD14199FC72900EC7FD6 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C751BD13199FC72900EC7FD6 /* CoreGraphics.framework */; };
+		C751BD16199FC73400EC7FD6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C751BD15199FC73400EC7FD6 /* UIKit.framework */; };
+		C751BD18199FC73E00EC7FD6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C751BD17199FC73E00EC7FD6 /* Foundation.framework */; };
+		C754655B199FC84500B06B35 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C754655A199FC84500B06B35 /* QuartzCore.framework */; };
+		C754655E199FC8A100B06B35 /* VBFDoubleSegment.m in Sources */ = {isa = PBXBuildFile; fileRef = C754655D199FC8A100B06B35 /* VBFDoubleSegment.m */; };
 		C7C4924B199FC4A2004CAF5A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C7C4924A199FC4A2004CAF5A /* main.m */; };
 		C7C4924E199FC4A2004CAF5A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C7C4924D199FC4A2004CAF5A /* AppDelegate.m */; };
 		C7C49251199FC4A2004CAF5A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7C49250199FC4A2004CAF5A /* ViewController.m */; };
@@ -26,6 +33,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0E4700CABFE446B7AB63DC37 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		B20D85CE3AC647209454ADCD /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		C751BD0C199FC67C00EC7FD6 /* VBFPopFlatButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VBFPopFlatButton.h; sourceTree = "<group>"; };
+		C751BD0D199FC67C00EC7FD6 /* VBFPopFlatButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VBFPopFlatButton.m; sourceTree = "<group>"; };
+		C751BD13199FC72900EC7FD6 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		C751BD15199FC73400EC7FD6 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		C751BD17199FC73E00EC7FD6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		C754655A199FC84500B06B35 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		C754655C199FC8A100B06B35 /* VBFDoubleSegment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VBFDoubleSegment.h; sourceTree = "<group>"; };
+		C754655D199FC8A100B06B35 /* VBFDoubleSegment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VBFDoubleSegment.m; sourceTree = "<group>"; };
 		C7C49245199FC4A2004CAF5A /* VBFPopFlatButton.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VBFPopFlatButton.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7C49249199FC4A2004CAF5A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C7C4924A199FC4A2004CAF5A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -45,6 +62,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C754655B199FC84500B06B35 /* QuartzCore.framework in Frameworks */,
+				C751BD18199FC73E00EC7FD6 /* Foundation.framework in Frameworks */,
+				C751BD16199FC73400EC7FD6 /* UIKit.framework in Frameworks */,
+				C751BD14199FC72900EC7FD6 /* CoreGraphics.framework in Frameworks */,
+				42BE9306C051469DA9559016 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -58,12 +80,37 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		67CF9A67DAF8466BA9ECD118 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C754655A199FC84500B06B35 /* QuartzCore.framework */,
+				C751BD17199FC73E00EC7FD6 /* Foundation.framework */,
+				C751BD15199FC73400EC7FD6 /* UIKit.framework */,
+				C751BD13199FC72900EC7FD6 /* CoreGraphics.framework */,
+				B20D85CE3AC647209454ADCD /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C751BD10199FC68300EC7FD6 /* VBFPopFlatButton */ = {
+			isa = PBXGroup;
+			children = (
+				C751BD0C199FC67C00EC7FD6 /* VBFPopFlatButton.h */,
+				C751BD0D199FC67C00EC7FD6 /* VBFPopFlatButton.m */,
+				C754655C199FC8A100B06B35 /* VBFDoubleSegment.h */,
+				C754655D199FC8A100B06B35 /* VBFDoubleSegment.m */,
+			);
+			name = VBFPopFlatButton;
+			sourceTree = "<group>";
+		};
 		C7C4923C199FC4A2004CAF5A = {
 			isa = PBXGroup;
 			children = (
 				C7C49247199FC4A2004CAF5A /* VBFPopFlatButton */,
 				C7C4925E199FC4A2004CAF5A /* VBFPopFlatButtonTests */,
 				C7C49246199FC4A2004CAF5A /* Products */,
+				0E4700CABFE446B7AB63DC37 /* Pods.xcconfig */,
+				67CF9A67DAF8466BA9ECD118 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -84,6 +131,7 @@
 				C7C4924F199FC4A2004CAF5A /* ViewController.h */,
 				C7C49250199FC4A2004CAF5A /* ViewController.m */,
 				C7C49252199FC4A2004CAF5A /* Main.storyboard */,
+				C751BD10199FC68300EC7FD6 /* VBFPopFlatButton */,
 				C7C49255199FC4A2004CAF5A /* Images.xcassets */,
 				C7C49248199FC4A2004CAF5A /* Supporting Files */,
 			);
@@ -123,9 +171,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C7C49265199FC4A2004CAF5A /* Build configuration list for PBXNativeTarget "VBFPopFlatButton" */;
 			buildPhases = (
+				36AA18E94F1E4F6E8FDDAB47 /* Check Pods Manifest.lock */,
 				C7C49241199FC4A2004CAF5A /* Sources */,
 				C7C49242199FC4A2004CAF5A /* Frameworks */,
 				C7C49243199FC4A2004CAF5A /* Resources */,
+				07FBEC40D78E4D49A2D8C2E5 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -210,13 +260,48 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		07FBEC40D78E4D49A2D8C2E5 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		36AA18E94F1E4F6E8FDDAB47 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		C7C49241199FC4A2004CAF5A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				C7C49251199FC4A2004CAF5A /* ViewController.m in Sources */,
+				C751BD0F199FC67C00EC7FD6 /* VBFPopFlatButton.m in Sources */,
 				C7C4924E199FC4A2004CAF5A /* AppDelegate.m in Sources */,
+				C754655E199FC8A100B06B35 /* VBFDoubleSegment.m in Sources */,
 				C7C4924B199FC4A2004CAF5A /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -285,7 +370,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -320,7 +405,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -329,10 +414,12 @@
 		};
 		C7C49266199FC4A2004CAF5A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0E4700CABFE446B7AB63DC37 /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = VBFPopFlatButton/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -340,10 +427,12 @@
 		};
 		C7C49267199FC4A2004CAF5A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0E4700CABFE446B7AB63DC37 /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = VBFPopFlatButton/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -362,6 +451,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = VBFPopFlatButtonTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/VBFPopFlatButton.app/VBFPopFlatButton";
@@ -377,6 +467,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = VBFPopFlatButtonTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/VBFPopFlatButton.app/VBFPopFlatButton";
@@ -402,6 +493,7 @@
 				C7C49267199FC4A2004CAF5A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C7C49268199FC4A2004CAF5A /* Build configuration list for PBXNativeTarget "VBFPopFlatButtonTests" */ = {
 			isa = XCConfigurationList;
@@ -410,6 +502,7 @@
 				C7C4926A199FC4A2004CAF5A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
