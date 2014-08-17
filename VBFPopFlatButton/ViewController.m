@@ -11,7 +11,9 @@
 #import "VBFPopFlatButton.h"
 
 @interface ViewController ()
-@property (nonatomic, strong) VBFPopFlatButton *flatButton;
+@property (nonatomic, strong) VBFPopFlatButton *flatRoundedButton;
+@property (nonatomic, strong) VBFPopFlatButton *flatPlainButton;
+
 @end
 
 @implementation ViewController
@@ -21,29 +23,47 @@
     // Do any additional setup after loading the view, typically from a nib.
     self.view.backgroundColor = [UIColor flatPeterRiverColor];
     
-    self.flatButton = [[VBFPopFlatButton alloc]initWithFrame:CGRectMake(150, 150, 30, 30)
+    self.flatRoundedButton = [[VBFPopFlatButton alloc]initWithFrame:CGRectMake(100, 150, 30, 30)
                                                   buttonType:buttonMenuType
                                                  buttonStyle:buttonRoundedStyle];
-    self.flatButton.roundBackgroundColor = [UIColor whiteColor];
-    self.flatButton.lineThickness = 2;
-    self.flatButton.linesColor = [UIColor flatPeterRiverColor];
-    [self.flatButton addTarget:self action:@selector(flatButtonPressed) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:self.flatButton];
+    self.flatRoundedButton.roundBackgroundColor = [UIColor whiteColor];
+    self.flatRoundedButton.lineThickness = 2;
+    self.flatRoundedButton.linesColor = [UIColor flatPeterRiverColor];
+    [self.flatRoundedButton addTarget:self
+                               action:@selector(flatRoundedButtonPressed)
+                     forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:self.flatRoundedButton];
+    
+    
+    self.flatPlainButton = [[VBFPopFlatButton alloc]initWithFrame:CGRectMake(200, 150, 30, 30)
+                                                       buttonType:buttonAddType
+                                                      buttonStyle:buttonPlainStyle];
+    self.flatPlainButton.lineThickness = 2;
+    self.flatPlainButton.linesColor = [UIColor whiteColor];
+    [self.flatPlainButton addTarget:self
+                             action:@selector(flatPlainButtonPressed)
+                   forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:self.flatPlainButton];
 }
 
 - (IBAction)buttonPressed:(UIButton *)sender {
     if (sender.tag != 9) {
-        [self.flatButton animateToType:sender.tag];
+        [self.flatRoundedButton animateToType:sender.tag];
+        [self.flatPlainButton animateToType:sender.tag];
     } else {
-        [self.flatButton animateToType:arc4random()%9];
+        [self.flatRoundedButton animateToType:arc4random()%9];
+        [self.flatPlainButton animateToType:arc4random()%9];
     }
 }
 
-- (void) flatButtonPressed {
+- (void) flatRoundedButtonPressed {
     NSLog(@"Button pressed");
-    [self.flatButton animateToType:arc4random()%9];
+    [self.flatRoundedButton animateToType:arc4random()%9];
 }
 
-
+- (void) flatPlainButtonPressed {
+    NSLog(@"Button pressed");
+    [self.flatPlainButton animateToType:arc4random()%9];
+}
 
 @end

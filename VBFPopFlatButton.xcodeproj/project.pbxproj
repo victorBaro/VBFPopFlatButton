@@ -8,12 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		42BE9306C051469DA9559016 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B20D85CE3AC647209454ADCD /* libPods.a */; };
-		C751BD0F199FC67C00EC7FD6 /* VBFPopFlatButton.m in Sources */ = {isa = PBXBuildFile; fileRef = C751BD0D199FC67C00EC7FD6 /* VBFPopFlatButton.m */; };
+		C733771019A0370F001896CA /* VBFDoubleSegment.m in Sources */ = {isa = PBXBuildFile; fileRef = C733770D19A0370F001896CA /* VBFDoubleSegment.m */; };
+		C733771119A0370F001896CA /* VBFPopFlatButton.m in Sources */ = {isa = PBXBuildFile; fileRef = C733770F19A0370F001896CA /* VBFPopFlatButton.m */; };
 		C751BD14199FC72900EC7FD6 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C751BD13199FC72900EC7FD6 /* CoreGraphics.framework */; };
 		C751BD16199FC73400EC7FD6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C751BD15199FC73400EC7FD6 /* UIKit.framework */; };
 		C751BD18199FC73E00EC7FD6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C751BD17199FC73E00EC7FD6 /* Foundation.framework */; };
 		C754655B199FC84500B06B35 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C754655A199FC84500B06B35 /* QuartzCore.framework */; };
-		C754655E199FC8A100B06B35 /* VBFDoubleSegment.m in Sources */ = {isa = PBXBuildFile; fileRef = C754655D199FC8A100B06B35 /* VBFDoubleSegment.m */; };
 		C7C4924B199FC4A2004CAF5A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C7C4924A199FC4A2004CAF5A /* main.m */; };
 		C7C4924E199FC4A2004CAF5A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C7C4924D199FC4A2004CAF5A /* AppDelegate.m */; };
 		C7C49251199FC4A2004CAF5A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7C49250199FC4A2004CAF5A /* ViewController.m */; };
@@ -35,14 +35,14 @@
 /* Begin PBXFileReference section */
 		0E4700CABFE446B7AB63DC37 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		B20D85CE3AC647209454ADCD /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		C751BD0C199FC67C00EC7FD6 /* VBFPopFlatButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VBFPopFlatButton.h; sourceTree = "<group>"; };
-		C751BD0D199FC67C00EC7FD6 /* VBFPopFlatButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VBFPopFlatButton.m; sourceTree = "<group>"; };
+		C733770C19A0370F001896CA /* VBFDoubleSegment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VBFDoubleSegment.h; path = VBFPopFlatButtonClasses/VBFDoubleSegment.h; sourceTree = "<group>"; };
+		C733770D19A0370F001896CA /* VBFDoubleSegment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VBFDoubleSegment.m; path = VBFPopFlatButtonClasses/VBFDoubleSegment.m; sourceTree = "<group>"; };
+		C733770E19A0370F001896CA /* VBFPopFlatButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VBFPopFlatButton.h; path = VBFPopFlatButtonClasses/VBFPopFlatButton.h; sourceTree = "<group>"; };
+		C733770F19A0370F001896CA /* VBFPopFlatButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VBFPopFlatButton.m; path = VBFPopFlatButtonClasses/VBFPopFlatButton.m; sourceTree = "<group>"; };
 		C751BD13199FC72900EC7FD6 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		C751BD15199FC73400EC7FD6 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		C751BD17199FC73E00EC7FD6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C754655A199FC84500B06B35 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		C754655C199FC8A100B06B35 /* VBFDoubleSegment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VBFDoubleSegment.h; sourceTree = "<group>"; };
-		C754655D199FC8A100B06B35 /* VBFDoubleSegment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VBFDoubleSegment.m; sourceTree = "<group>"; };
 		C7C49245199FC4A2004CAF5A /* VBFPopFlatButton.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VBFPopFlatButton.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7C49249199FC4A2004CAF5A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C7C4924A199FC4A2004CAF5A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -95,10 +95,10 @@
 		C751BD10199FC68300EC7FD6 /* VBFPopFlatButton */ = {
 			isa = PBXGroup;
 			children = (
-				C751BD0C199FC67C00EC7FD6 /* VBFPopFlatButton.h */,
-				C751BD0D199FC67C00EC7FD6 /* VBFPopFlatButton.m */,
-				C754655C199FC8A100B06B35 /* VBFDoubleSegment.h */,
-				C754655D199FC8A100B06B35 /* VBFDoubleSegment.m */,
+				C733770C19A0370F001896CA /* VBFDoubleSegment.h */,
+				C733770D19A0370F001896CA /* VBFDoubleSegment.m */,
+				C733770E19A0370F001896CA /* VBFPopFlatButton.h */,
+				C733770F19A0370F001896CA /* VBFPopFlatButton.m */,
 			);
 			name = VBFPopFlatButton;
 			sourceTree = "<group>";
@@ -298,10 +298,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C733771119A0370F001896CA /* VBFPopFlatButton.m in Sources */,
 				C7C49251199FC4A2004CAF5A /* ViewController.m in Sources */,
-				C751BD0F199FC67C00EC7FD6 /* VBFPopFlatButton.m in Sources */,
+				C733771019A0370F001896CA /* VBFDoubleSegment.m in Sources */,
 				C7C4924E199FC4A2004CAF5A /* AppDelegate.m in Sources */,
-				C754655E199FC8A100B06B35 /* VBFDoubleSegment.m in Sources */,
 				C7C4924B199FC4A2004CAF5A /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
