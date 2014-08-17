@@ -1,7 +1,7 @@
 VBFPopFlatButton
 ================
 
-Flat button with 9 different states and 2 types animated using POP.
+Flat button with 9 different states and 2 types animated using [pop](https://github.com/facebook/pop).
 
 These are some examples of both types in different states:
 
