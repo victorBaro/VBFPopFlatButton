@@ -51,7 +51,7 @@
                                      self.totalLength/2);
     self.topLine.path = [UIBezierPath bezierPathWithRect:self.topLine.bounds].CGPath;
     self.topLine.fillColor = self.lineColor.CGColor;
-    self.topLine.anchorPoint = CGPointMake(0.5, 1);
+    self.topLine.anchorPoint = CGPointMake(0.5, 0.95);
     self.topLine.position = CGPointMake(self.totalLength/2,
                                         self.totalLength/2);
     [self addSublayer:self.topLine];
@@ -64,7 +64,7 @@
                                         self.totalLength/2);
     self.bottomLine.path = [UIBezierPath bezierPathWithRect:self.bottomLine.bounds].CGPath;
     self.bottomLine.fillColor = self.lineColor.CGColor;
-    self.bottomLine.anchorPoint = CGPointMake(0.5, 0);
+    self.bottomLine.anchorPoint = CGPointMake(0.5, 0.05);
     self.bottomLine.position = CGPointMake(self.totalLength/2,
                                            self.totalLength/2);
     [self addSublayer:self.bottomLine];
