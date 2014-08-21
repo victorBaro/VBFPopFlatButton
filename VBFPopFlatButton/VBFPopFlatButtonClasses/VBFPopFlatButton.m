@@ -183,6 +183,8 @@
     [self.firstSegment animatePositionToPoint:firstOriginPoint];
     [self.secondSegment animatePositionToPoint:secondOriginPoint];
     [self.thirdSegment animatePositionToPoint:thirdOriginPoint];
+    
+    self.currentButtonType = finalType;
 }
 
 /*
