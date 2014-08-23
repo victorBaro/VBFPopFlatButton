@@ -9,8 +9,8 @@ These are some examples of both types in different states:
 ![Examples](http://victorbaro.com/wp-content/uploads/2014/08/flatButton.png)
 
 And here you can see them animated:
-![ButtonDemo](http://victorbaro.com/wp-content/uploads/2014/08/flatButtonDemo.gif)
 
+![ButtonDribbble](https://d13yacurqjgara.cloudfront.net/users/381133/screenshots/1696580/vbfpopflatbutton3.gif)
 
 
 ##How to use it
