@@ -28,6 +28,7 @@
         self.currentButtonType = initType;
         self.currentButtonStyle = bStyle;
         self.lineThickness = 2;
+        self.lineRadius = 0;
         self.linesColor = [UIColor whiteColor];
         [self commonSetup];
     }
@@ -40,6 +41,7 @@
         self.currentButtonType = buttonDefaultType;
         self.currentButtonStyle = buttonPlainStyle;
         self.lineThickness = 2;
+        self.lineRadius = 0;
         self.linesColor = [UIColor whiteColor];
         [self commonSetup];
     }
@@ -49,18 +51,21 @@
 - (void) commonSetup {
     _firstSegment = [[VBFDoubleSegment alloc]initWithLength:self.frame.size.width
                                                   thickness:self.lineThickness
+                                                     radius:self.lineRadius
                                                       color:self.linesColor
                                                initialState:doubleSegmentDefaultState];
     [self.layer addSublayer:_firstSegment];
     
     _secondSegment = [[VBFDoubleSegment alloc]initWithLength:self.frame.size.width
                                                    thickness:self.lineThickness
+                                                      radius:self.lineRadius
                                                        color:self.linesColor
                                                 initialState:doubleSegmentDefaultState];
     [self.layer addSublayer:_secondSegment];
     
     _thirdSegment = [[VBFDoubleSegment alloc]initWithLength:self.frame.size.width
                                                   thickness:self.lineThickness
+                                                     radius:self.lineRadius
                                                       color:self.linesColor
                                                initialState:doubleSegmentMinusState];
     _thirdSegment.opacity = 0.0;
@@ -96,6 +101,14 @@
     
     _lineThickness = lineThickness;
 }
+- (void)setLineRadius:(CGFloat)lineRadius
+{
+    _firstSegment.lineRadius = lineRadius;
+    _secondSegment.lineRadius = lineRadius;
+    _thirdSegment.lineRadius = lineRadius;
+    
+    _lineRadius = lineRadius;
+}
 - (void)setLinesColor:(UIColor *)linesColor {
     _firstSegment.lineColor = linesColor;
     _secondSegment.lineColor = linesColor;
@@ -103,7 +116,6 @@
     
     _linesColor = linesColor;
 }
-
 
 - (void)animateToType:(FlatButtonType)finalType {
     self.firstSegment.opacity = 1.0f;
@@ -113,7 +125,6 @@
                                            CGRectGetHeight(self.frame)/2);
     CGPoint secondOriginPoint = firstOriginPoint;
     CGPoint thirdOriginPoint = firstOriginPoint;
-
     
     switch (finalType) {
         case buttonAddType:

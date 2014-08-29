@@ -13,16 +13,18 @@
 @property (nonatomic) CGFloat totalLength;
 @property (nonatomic, strong) CAShapeLayer *topLine;
 @property (nonatomic, strong) CAShapeLayer *bottomLine;
+@property (nonatomic) CGFloat topAnchorPoint;
 @end
 
 @implementation VBFDoubleSegment
 
 - (id)init {
-    return [self initWithLength:20 thickness:2 color:[UIColor whiteColor] initialState:doubleSegmentDefaultState];
+    return [self initWithLength:20 thickness:2 radius:0 color:[UIColor whiteColor] initialState:doubleSegmentDefaultState];
 }
 
 - (id)initWithLength:(CGFloat)length
-           thickness:(NSInteger)lineThickness
+           thickness:(CGFloat)lineThickness
+              radius:(CGFloat)lineRadius
                color:(UIColor *)lineColor
         initialState:(DoubleSegmentState)initState {
     self = [super init];
@@ -30,6 +32,7 @@
         self.totalLength = length;
         self.lineThickness = lineThickness;
         self.lineColor = lineColor;
+        self.lineRadius = lineRadius;
         self.backgroundColor = [UIColor clearColor].CGColor;
         
         self.frame = CGRectMake(0,
@@ -44,34 +47,36 @@
 }
 
 - (void) setupLines {
+    self.topAnchorPoint = (self.totalLength/2 / (self.totalLength/2 + self.lineThickness/2));
+    
     self.topLine = [CAShapeLayer layer];
     self.topLine.bounds = CGRectMake(0,
                                      0,
                                      self.lineThickness,
-                                     self.totalLength/2);
-    self.topLine.path = [UIBezierPath bezierPathWithRect:self.topLine.bounds].CGPath;
+                                     self.totalLength/2 + self.lineThickness/2);
+    self.topLine.path = [UIBezierPath bezierPathWithRoundedRect:self.topLine.bounds
+                                              byRoundingCorners:UIRectCornerTopLeft | UIRectCornerTopRight
+                                                    cornerRadii:CGSizeMake(self.lineRadius, self.lineRadius)].CGPath;
     self.topLine.fillColor = self.lineColor.CGColor;
-    self.topLine.anchorPoint = CGPointMake(0.5, 0.95);
+    self.topLine.anchorPoint = CGPointMake(0.5, self.topAnchorPoint);
     self.topLine.position = CGPointMake(self.totalLength/2,
                                         self.totalLength/2);
     [self addSublayer:self.topLine];
-    
     
     self.bottomLine = [CAShapeLayer layer];
     self.bottomLine.bounds = CGRectMake(0,
                                         0,
                                         self.lineThickness,
-                                        self.totalLength/2);
-    self.bottomLine.path = [UIBezierPath bezierPathWithRect:self.bottomLine.bounds].CGPath;
+                                        self.totalLength/2 + self.lineThickness/2);
+    self.bottomLine.path = [UIBezierPath bezierPathWithRoundedRect:self.bottomLine.bounds
+                                                 byRoundingCorners:UIRectCornerBottomLeft | UIRectCornerBottomRight
+                                                       cornerRadii:CGSizeMake(self.lineRadius, self.lineRadius)].CGPath;
     self.bottomLine.fillColor = self.lineColor.CGColor;
-    self.bottomLine.anchorPoint = CGPointMake(0.5, 0.05);
+    self.bottomLine.anchorPoint = CGPointMake(0.5, 1-self.topAnchorPoint);
     self.bottomLine.position = CGPointMake(self.totalLength/2,
                                            self.totalLength/2);
     [self addSublayer:self.bottomLine];
 }
-
-
-
 
 - (void)setLineColor:(UIColor *)lineColor {
     if (_topLine) {
@@ -84,21 +89,46 @@
 }
 
 - (void)setLineThickness:(CGFloat)lineThickness {
+    self.topAnchorPoint = (self.totalLength/2 / (self.totalLength/2 + lineThickness/2));
+    
     if (_bottomLine) {
         _bottomLine.bounds = CGRectMake(0,
                                         0,
                                         lineThickness,
-                                        self.totalLength/2);
-        _bottomLine.path = [UIBezierPath bezierPathWithRect:self.bottomLine.bounds].CGPath;
+                                        self.totalLength/2 + lineThickness/2);
+        _bottomLine.path = [UIBezierPath bezierPathWithRoundedRect:self.bottomLine.bounds
+                                                 byRoundingCorners:UIRectCornerBottomLeft | UIRectCornerBottomRight
+                                                       cornerRadii:CGSizeMake(self.lineRadius, self.lineRadius)].CGPath;
+        self.bottomLine.anchorPoint = CGPointMake(0.5, 1-self.topAnchorPoint);
     }
     if (_topLine) {
         _topLine.bounds = CGRectMake(0,
                                      0,
                                      lineThickness,
-                                     self.totalLength/2);
-        _topLine.path = [UIBezierPath bezierPathWithRect:self.topLine.bounds].CGPath;
+                                     self.totalLength/2 + lineThickness/2);
+        _topLine.path = [UIBezierPath bezierPathWithRoundedRect:self.topLine.bounds
+                                              byRoundingCorners:UIRectCornerTopLeft | UIRectCornerTopRight
+                                                    cornerRadii:CGSizeMake(self.lineRadius, self.lineRadius)].CGPath;
+        self.topLine.anchorPoint = CGPointMake(0.5, self.topAnchorPoint);
     }
     _lineThickness = lineThickness;
+    
+    NSLog(@"%@", NSStringFromCGRect(self.topLine.bounds));
+}
+
+- (void)setLineRadius:(CGFloat)lineRadius
+{
+    if (_bottomLine) {
+        _bottomLine.path = [UIBezierPath bezierPathWithRoundedRect:self.bottomLine.bounds
+                                                 byRoundingCorners:UIRectCornerBottomLeft | UIRectCornerBottomRight
+                                                       cornerRadii:CGSizeMake(lineRadius, lineRadius)].CGPath;
+    }
+    if (_topLine) {
+        _topLine.path = [UIBezierPath bezierPathWithRoundedRect:self.topLine.bounds
+                                              byRoundingCorners:UIRectCornerTopLeft | UIRectCornerTopRight
+                                                    cornerRadii:CGSizeMake(lineRadius, lineRadius)].CGPath;
+    }
+    _lineRadius = lineRadius;
 }
 
 - (void) animateToState:(DoubleSegmentState)finalState {

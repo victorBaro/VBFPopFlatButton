@@ -27,7 +27,8 @@
                                                   buttonType:buttonMenuType
                                                  buttonStyle:buttonRoundedStyle];
     self.flatRoundedButton.roundBackgroundColor = [UIColor whiteColor];
-    self.flatRoundedButton.lineThickness = 2;
+    self.flatRoundedButton.lineThickness = 5;
+    self.flatRoundedButton.lineRadius = 2;
     self.flatRoundedButton.linesColor = [UIColor flatPeterRiverColor];
     [self.flatRoundedButton addTarget:self
                                action:@selector(flatRoundedButtonPressed)

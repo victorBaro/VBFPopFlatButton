@@ -29,10 +29,12 @@ typedef NS_ENUM(NSInteger, DoubleSegmentState) {
 
 @property (nonatomic, strong) UIColor *lineColor;
 @property (nonatomic) CGFloat lineThickness;
+@property (nonatomic) CGFloat lineRadius;
 
 
 - (id)initWithLength:(CGFloat)length
-           thickness:(NSInteger)lineThickness
+           thickness:(CGFloat)lineThickness
+              radius:(CGFloat)lineRadius
                color:(UIColor *)lineColor
         initialState:(DoubleSegmentState)initState;
 
