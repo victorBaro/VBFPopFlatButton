@@ -39,7 +39,6 @@
                                 0,
                                 length,
                                 length);
-        
         [self setupLines];
         [self animateToState:initState];
     }
@@ -47,16 +46,14 @@
 }
 
 - (void) setupLines {
-    self.topAnchorPoint = (self.totalLength/2 / (self.totalLength/2 + self.lineThickness/2));
-    
+    self.topAnchorPoint = ((self.totalLength/2) / ((self.totalLength + self.lineThickness) / 2));
     self.topLine = [CAShapeLayer layer];
     self.topLine.bounds = CGRectMake(0,
                                      0,
                                      self.lineThickness,
-                                     self.totalLength/2 + self.lineThickness/2);
+                                     (self.totalLength + self.lineThickness)/2);
     self.topLine.path = [UIBezierPath bezierPathWithRoundedRect:self.topLine.bounds
-                                              byRoundingCorners:UIRectCornerTopLeft | UIRectCornerTopRight
-                                                    cornerRadii:CGSizeMake(self.lineRadius, self.lineRadius)].CGPath;
+                                                   cornerRadius:self.lineRadius].CGPath;
     self.topLine.fillColor = self.lineColor.CGColor;
     self.topLine.anchorPoint = CGPointMake(0.5, self.topAnchorPoint);
     self.topLine.position = CGPointMake(self.totalLength/2,
@@ -67,10 +64,9 @@
     self.bottomLine.bounds = CGRectMake(0,
                                         0,
                                         self.lineThickness,
-                                        self.totalLength/2 + self.lineThickness/2);
+                                        (self.totalLength + self.lineThickness)/2);
     self.bottomLine.path = [UIBezierPath bezierPathWithRoundedRect:self.bottomLine.bounds
-                                                 byRoundingCorners:UIRectCornerBottomLeft | UIRectCornerBottomRight
-                                                       cornerRadii:CGSizeMake(self.lineRadius, self.lineRadius)].CGPath;
+                                                      cornerRadius:self.lineRadius].CGPath;
     self.bottomLine.fillColor = self.lineColor.CGColor;
     self.bottomLine.anchorPoint = CGPointMake(0.5, 1-self.topAnchorPoint);
     self.bottomLine.position = CGPointMake(self.totalLength/2,
@@ -89,44 +85,37 @@
 }
 
 - (void)setLineThickness:(CGFloat)lineThickness {
-    self.topAnchorPoint = (self.totalLength/2 / (self.totalLength/2 + lineThickness/2));
-    
+    self.topAnchorPoint = ((self.totalLength/2) / ((self.totalLength + lineThickness) / 2));
     if (_bottomLine) {
         _bottomLine.bounds = CGRectMake(0,
                                         0,
                                         lineThickness,
-                                        self.totalLength/2 + lineThickness/2);
+                                        (self.totalLength + lineThickness)/2);
         _bottomLine.path = [UIBezierPath bezierPathWithRoundedRect:self.bottomLine.bounds
-                                                 byRoundingCorners:UIRectCornerBottomLeft | UIRectCornerBottomRight
-                                                       cornerRadii:CGSizeMake(self.lineRadius, self.lineRadius)].CGPath;
+                                                      cornerRadius:self.lineRadius].CGPath;
         self.bottomLine.anchorPoint = CGPointMake(0.5, 1-self.topAnchorPoint);
     }
     if (_topLine) {
         _topLine.bounds = CGRectMake(0,
                                      0,
                                      lineThickness,
-                                     self.totalLength/2 + lineThickness/2);
+                                     (self.totalLength + lineThickness)/2);
         _topLine.path = [UIBezierPath bezierPathWithRoundedRect:self.topLine.bounds
-                                              byRoundingCorners:UIRectCornerTopLeft | UIRectCornerTopRight
-                                                    cornerRadii:CGSizeMake(self.lineRadius, self.lineRadius)].CGPath;
+                                                   cornerRadius:self.lineRadius].CGPath;
         self.topLine.anchorPoint = CGPointMake(0.5, self.topAnchorPoint);
     }
     _lineThickness = lineThickness;
-    
-    NSLog(@"%@", NSStringFromCGRect(self.topLine.bounds));
 }
 
 - (void)setLineRadius:(CGFloat)lineRadius
 {
     if (_bottomLine) {
         _bottomLine.path = [UIBezierPath bezierPathWithRoundedRect:self.bottomLine.bounds
-                                                 byRoundingCorners:UIRectCornerBottomLeft | UIRectCornerBottomRight
-                                                       cornerRadii:CGSizeMake(lineRadius, lineRadius)].CGPath;
+                                                      cornerRadius:lineRadius].CGPath;
     }
     if (_topLine) {
         _topLine.path = [UIBezierPath bezierPathWithRoundedRect:self.topLine.bounds
-                                              byRoundingCorners:UIRectCornerTopLeft | UIRectCornerTopRight
-                                                    cornerRadii:CGSizeMake(lineRadius, lineRadius)].CGPath;
+                                                   cornerRadius:lineRadius].CGPath;
     }
     _lineRadius = lineRadius;
 }
