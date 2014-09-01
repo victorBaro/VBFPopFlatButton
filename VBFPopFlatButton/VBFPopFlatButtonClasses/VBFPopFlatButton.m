@@ -9,7 +9,10 @@
 #import "VBFPopFlatButton.h"
 #import "VBFDoubleSegment.h"
 
-@interface VBFPopFlatButton ()
+@interface VBFPopFlatButton () {
+    NSMutableDictionary *_tintColors;
+}
+
 @property (nonatomic, strong) VBFDoubleSegment *firstSegment;
 @property (nonatomic, strong) VBFDoubleSegment *secondSegment;
 @property (nonatomic, strong) VBFDoubleSegment *thirdSegment; //Only used for menu button
@@ -17,6 +20,8 @@
 @end
 
 @implementation VBFPopFlatButton
+
+@dynamic linesColor;
 
 - (instancetype)initWithFrame:(CGRect)frame {
     return [self initWithFrame:frame buttonType:buttonDefaultType buttonStyle:buttonPlainStyle];
@@ -29,7 +34,7 @@
         self.currentButtonStyle = bStyle;
         self.lineThickness = 2;
         self.lineRadius = 0;
-        self.linesColor = [UIColor whiteColor];
+        self.tintColor = [UIColor whiteColor];
         [self commonSetup];
     }
     return self;
@@ -42,7 +47,7 @@
         self.currentButtonStyle = buttonPlainStyle;
         self.lineThickness = 2;
         self.lineRadius = 0;
-        self.linesColor = [UIColor whiteColor];
+        self.tintColor = [UIColor whiteColor];
         [self commonSetup];
     }
     return self;
@@ -52,21 +57,21 @@
     _firstSegment = [[VBFDoubleSegment alloc]initWithLength:self.frame.size.width
                                                   thickness:self.lineThickness
                                                      radius:self.lineRadius
-                                                      color:self.linesColor
+                                                      color:self.tintColor
                                                initialState:doubleSegmentDefaultState];
     [self.layer addSublayer:_firstSegment];
     
     _secondSegment = [[VBFDoubleSegment alloc]initWithLength:self.frame.size.width
                                                    thickness:self.lineThickness
                                                       radius:self.lineRadius
-                                                       color:self.linesColor
+                                                       color:self.tintColor
                                                 initialState:doubleSegmentDefaultState];
     [self.layer addSublayer:_secondSegment];
     
     _thirdSegment = [[VBFDoubleSegment alloc]initWithLength:self.frame.size.width
                                                   thickness:self.lineThickness
                                                      radius:self.lineRadius
-                                                      color:self.linesColor
+                                                      color:self.tintColor
                                                initialState:doubleSegmentMinusState];
     _thirdSegment.opacity = 0.0;
     [self.layer addSublayer:_thirdSegment];
@@ -109,12 +114,73 @@
     
     _lineRadius = lineRadius;
 }
-- (void)setLinesColor:(UIColor *)linesColor {
-    _firstSegment.lineColor = linesColor;
-    _secondSegment.lineColor = linesColor;
-    _thirdSegment.lineColor = linesColor;
+
+- (void)setTintColor:(UIColor *)tintColor {
+    [super setTintColor:tintColor];
     
-    _linesColor = linesColor;
+    _firstSegment.lineColor = tintColor;
+    _secondSegment.lineColor = tintColor;
+    _thirdSegment.lineColor = tintColor;
+}
+
+- (void)setTintColor:(UIColor *)tintColor forState:(UIControlState)state {
+    if (!_tintColors) {
+        _tintColors = [NSMutableDictionary dictionary];
+    }
+    
+    if (!tintColor) {
+        [_tintColors removeObjectForKey:@(state)];
+    }
+    else {
+        _tintColors[@(state)] = tintColor;
+    }
+    
+    [self updateState];
+}
+
+- (void)setSelected:(BOOL)selected {
+    [super setSelected:selected];
+    [self updateState];
+}
+
+- (void)setHighlighted:(BOOL)highlighted {
+    [super setHighlighted:highlighted];
+    [self updateState];
+}
+
+- (void)setEnabled:(BOOL)enabled {
+    [super setEnabled:enabled];
+    [self updateState];
+}
+
+- (void)updateState {
+    self.tintColor = [self tintColorForState:self.state];
+}
+
+- (UIColor *)tintColorForState:(UIControlState)state {
+    UIColor *tint = _tintColors[@(self.state)];
+    
+    if (!tint) {
+        //Fall back to UIControlStateNormal
+        tint = _tintColors[@(UIControlStateNormal)];
+    }
+    
+    if (!tint) {
+        //Use current tint color
+        tint = self.tintColor;
+    }
+    
+    if (!tint) {
+        //Fall back to window color
+        tint = self.window.tintColor;
+    }
+    
+    if (!tint) {
+        //Fall back to default color
+        tint = [UIColor whiteColor];
+    }
+    
+    return tint;
 }
 
 - (void)animateToType:(FlatButtonType)finalType {
@@ -198,12 +264,14 @@
     self.currentButtonType = finalType;
 }
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
+#pragma mark - Deprecated
+
+- (void)setLinesColor:(UIColor *)linesColor {
+    [self setTintColor:linesColor];
 }
-*/
+
+- (UIColor *)linesColor {
+    return self.tintColor;
+}
 
 @end

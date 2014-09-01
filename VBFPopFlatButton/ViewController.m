@@ -29,7 +29,7 @@
     self.flatRoundedButton.roundBackgroundColor = [UIColor whiteColor];
     self.flatRoundedButton.lineThickness = 3;
     self.flatRoundedButton.lineRadius = 1;
-    self.flatRoundedButton.linesColor = [UIColor flatPeterRiverColor];
+    self.flatRoundedButton.tintColor = [UIColor flatPeterRiverColor];
     [self.flatRoundedButton addTarget:self
                                action:@selector(flatRoundedButtonPressed)
                      forControlEvents:UIControlEventTouchUpInside];
@@ -40,7 +40,7 @@
                                                        buttonType:buttonAddType
                                                       buttonStyle:buttonPlainStyle];
     self.flatPlainButton.lineThickness = 2;
-    self.flatPlainButton.linesColor = [UIColor whiteColor];
+    self.flatPlainButton.tintColor = [UIColor whiteColor];
     [self.flatPlainButton addTarget:self
                              action:@selector(flatPlainButtonPressed)
                    forControlEvents:UIControlEventTouchUpInside];

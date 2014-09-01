@@ -18,11 +18,11 @@
 
 @implementation VBFDoubleSegment
 
-- (id)init {
+- (instancetype)init {
     return [self initWithLength:20 thickness:2 radius:0 color:[UIColor whiteColor] initialState:doubleSegmentDefaultState];
 }
 
-- (id)initWithLength:(CGFloat)length
+- (instancetype)initWithLength:(CGFloat)length
            thickness:(CGFloat)lineThickness
               radius:(CGFloat)lineRadius
                color:(UIColor *)lineColor
