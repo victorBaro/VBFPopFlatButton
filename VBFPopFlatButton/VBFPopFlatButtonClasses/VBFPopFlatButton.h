@@ -34,6 +34,7 @@ typedef NS_ENUM(NSInteger, FlatButtonStyle) {
 @property (nonatomic, strong) UIColor *roundBackgroundColor;
 
 @property (nonatomic) CGFloat lineThickness;
+@property (nonatomic) CGFloat lineRadius;
 @property (nonatomic, strong) UIColor *linesColor;
 
 - (instancetype)initWithFrame:(CGRect)frame
