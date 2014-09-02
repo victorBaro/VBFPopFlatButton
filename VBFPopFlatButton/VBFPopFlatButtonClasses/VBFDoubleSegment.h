@@ -32,7 +32,7 @@ typedef NS_ENUM(NSInteger, DoubleSegmentState) {
 @property (nonatomic) CGFloat lineRadius;
 
 
-- (id)initWithLength:(CGFloat)length
+- (instancetype)initWithLength:(CGFloat)length
            thickness:(CGFloat)lineThickness
               radius:(CGFloat)lineRadius
                color:(UIColor *)lineColor
