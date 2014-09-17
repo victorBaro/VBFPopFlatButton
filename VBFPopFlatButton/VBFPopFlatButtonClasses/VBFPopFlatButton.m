@@ -253,6 +253,25 @@
             
             secondOriginPoint.y -= self.bounds.size.width/2;
             break;
+        case buttonDownBasicType:
+            [self.firstSegment animateToState:doubleSegmentDownArrow];
+            [self.secondSegment animateToState:doubleSegmentDownArrow];
+            self.secondSegment.opacity = 0.0;
+
+            firstOriginPoint.y += CGRectGetHeight(self.firstSegment.frame)/5;
+            break;
+        case buttonDownArrowType:
+            [self.firstSegment animateToState:doubleSegmentDefaultState];
+            [self.secondSegment animateToState:doubleSegmentDownArrow];
+            secondOriginPoint.y += self.bounds.size.width/2;
+            break;
+        case buttonUpBasicType:
+            [self.firstSegment animateToState:doubleSegmentUpArrow];
+            [self.secondSegment animateToState:doubleSegmentUpArrow];
+            self.secondSegment.opacity = 0.0;
+
+            firstOriginPoint.y -= CGRectGetHeight(self.firstSegment.frame)/5;
+            break;
         default:
             break;
     }

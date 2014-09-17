@@ -48,23 +48,23 @@
 }
 
 - (IBAction)buttonPressed:(UIButton *)sender {
-    if (sender.tag != 9) {
+    if (sender.tag != 12) {
         [self.flatRoundedButton animateToType:sender.tag];
         [self.flatPlainButton animateToType:sender.tag];
     } else {
-        [self.flatRoundedButton animateToType:arc4random()%9];
-        [self.flatPlainButton animateToType:arc4random()%9];
+        [self.flatRoundedButton animateToType:arc4random()%12];
+        [self.flatPlainButton animateToType:arc4random()%12];
     }
 }
 
 - (void) flatRoundedButtonPressed {
     NSLog(@"Button pressed");
-    [self.flatRoundedButton animateToType:arc4random()%9];
+    [self.flatRoundedButton animateToType:arc4random()%12];
 }
 
 - (void) flatPlainButtonPressed {
     NSLog(@"Button pressed");
-    [self.flatPlainButton animateToType:arc4random()%9];
+    [self.flatPlainButton animateToType:arc4random()%12];
 }
 
 @end

@@ -19,7 +19,10 @@ typedef NS_ENUM(NSInteger, FlatButtonType) {
     buttonForwardType,             // >
     buttonMenuType,                 // 3horizontal lines
     buttonDownloadType,
-    buttonShareType
+    buttonShareType,
+    buttonDownBasicType,
+    buttonUpBasicType,
+    buttonDownArrowType
 };
 
 typedef NS_ENUM(NSInteger, FlatButtonStyle) {
@@ -41,7 +44,7 @@ typedef NS_ENUM(NSInteger, FlatButtonStyle) {
 - (UIColor *)tintColorForState:(UIControlState)state;
 
 - (instancetype)initWithFrame:(CGRect)frame
-                  buttonType:(FlatButtonType)initType
+                   buttonType:(FlatButtonType)initType
                   buttonStyle:(FlatButtonStyle)bStyle;
 
 - (void)animateToType:(FlatButtonType)finalType;
