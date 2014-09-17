@@ -60,14 +60,14 @@
                                                       color:self.tintColor
                                                initialState:doubleSegmentDefaultState];
     [self.layer addSublayer:_firstSegment];
-    
+
     _secondSegment = [[VBFDoubleSegment alloc]initWithLength:self.frame.size.width
                                                    thickness:self.lineThickness
                                                       radius:self.lineRadius
                                                        color:self.tintColor
                                                 initialState:doubleSegmentDefaultState];
     [self.layer addSublayer:_secondSegment];
-    
+
     _thirdSegment = [[VBFDoubleSegment alloc]initWithLength:self.frame.size.width
                                                   thickness:self.lineThickness
                                                      radius:self.lineRadius
@@ -75,35 +75,37 @@
                                                initialState:doubleSegmentMinusState];
     _thirdSegment.opacity = 0.0;
     [self.layer addSublayer:_thirdSegment];
-    
+
     if (self.currentButtonStyle == buttonRoundedStyle) {
-        self.bckgLayer = [CALayer layer];
-        CGFloat amount = self.frame.size.width / 3;
-        self.bckgLayer.frame = CGRectInset(self.bounds, -amount, -amount);
-        self.bckgLayer.cornerRadius = self.bckgLayer.bounds.size.width/2;
-        self.bckgLayer.backgroundColor = self.roundBackgroundColor.CGColor;
-        
-        [self.layer insertSublayer:self.bckgLayer below:_firstSegment];
-        
+        [self setupBackgroundLayer];
     }
-    
+
     [self animateToType:self.currentButtonType];
 }
 
+- (void)setupBackgroundLayer {
+    self.bckgLayer = [CALayer layer];
+    CGFloat amount = self.frame.size.width / 3;
+    self.bckgLayer.frame = CGRectInset(self.bounds, -amount, -amount);
+    self.bckgLayer.cornerRadius = self.bckgLayer.bounds.size.width/2;
+    self.bckgLayer.backgroundColor = self.roundBackgroundColor.CGColor;
 
+    [self.layer insertSublayer:self.bckgLayer below:_firstSegment];
+}
 
 - (void)setRoundBackgroundColor:(UIColor *)roundBackgroundColor {
     if (_currentButtonStyle == buttonRoundedStyle) {
-        if (self.bckgLayer) {
-            self.bckgLayer.backgroundColor = roundBackgroundColor.CGColor;
+        if (!self.bckgLayer) {
+            [self setupBackgroundLayer];
         }
+        self.bckgLayer.backgroundColor = roundBackgroundColor.CGColor;
     }
 }
 - (void)setLineThickness:(CGFloat)lineThickness {
     _firstSegment.lineThickness = lineThickness;
     _secondSegment.lineThickness = lineThickness;
     _thirdSegment.lineThickness = lineThickness;
-    
+
     _lineThickness = lineThickness;
 }
 - (void)setLineRadius:(CGFloat)lineRadius
@@ -111,13 +113,13 @@
     _firstSegment.lineRadius = lineRadius;
     _secondSegment.lineRadius = lineRadius;
     _thirdSegment.lineRadius = lineRadius;
-    
+
     _lineRadius = lineRadius;
 }
 
 - (void)setTintColor:(UIColor *)tintColor {
     [super setTintColor:tintColor];
-    
+
     _firstSegment.lineColor = tintColor;
     _secondSegment.lineColor = tintColor;
     _thirdSegment.lineColor = tintColor;
@@ -127,14 +129,14 @@
     if (!_tintColors) {
         _tintColors = [NSMutableDictionary dictionary];
     }
-    
+
     if (!tintColor) {
         [_tintColors removeObjectForKey:@(state)];
     }
     else {
         _tintColors[@(state)] = tintColor;
     }
-    
+
     [self updateState];
 }
 
@@ -159,27 +161,27 @@
 
 - (UIColor *)tintColorForState:(UIControlState)state {
     UIColor *tint = _tintColors[@(self.state)];
-    
+
     if (!tint) {
         //Fall back to UIControlStateNormal
         tint = _tintColors[@(UIControlStateNormal)];
     }
-    
+
     if (!tint) {
         //Use current tint color
         tint = self.tintColor;
     }
-    
+
     if (!tint) {
         //Fall back to window color
         tint = self.window.tintColor;
     }
-    
+
     if (!tint) {
         //Fall back to default color
         tint = [UIColor whiteColor];
     }
-    
+
     return tint;
 }
 
@@ -191,7 +193,7 @@
                                            CGRectGetHeight(self.frame)/2);
     CGPoint secondOriginPoint = firstOriginPoint;
     CGPoint thirdOriginPoint = firstOriginPoint;
-    
+
     switch (finalType) {
         case buttonAddType:
             [self.firstSegment animateToState:doubleSegmentFirstQuadrantState];
@@ -201,7 +203,7 @@
             [self.firstSegment animateToState:doubleSegmentLessThanState];
             [self.secondSegment animateToState:doubleSegmentLessThanState];
             self.secondSegment.opacity = 0.0;
-            
+
             CGFloat hAmount = CGRectGetWidth(self.frame)/5;
             firstOriginPoint.x -= hAmount;
             secondOriginPoint.x -= hAmount;
@@ -218,7 +220,7 @@
             [self.firstSegment animateToState:doubleSegmentMoreThanState];
             [self.secondSegment animateToState:doubleSegmentMoreThanState];
             self.secondSegment.opacity = 0.0;
-            
+
             CGFloat horAmount = CGRectGetWidth(self.frame)/5;
             firstOriginPoint.x += horAmount;
             secondOriginPoint.x += horAmount;
@@ -228,8 +230,8 @@
             [self.firstSegment animateToState:doubleSegmentMinusState];
             [self.secondSegment animateToState:doubleSegmentMinusState];
             [self.thirdSegment animateToState:doubleSegmentMinusState];
-            
-            
+
+
             CGFloat verticalAmount = CGRectGetHeight(self.frame)/3;
             thirdOriginPoint.y -= verticalAmount;
             secondOriginPoint.y += verticalAmount;
@@ -243,14 +245,14 @@
             [self.firstSegment animateToState:doubleSegmentDefaultState];
             [self.secondSegment animateToState:doubleSegmentDownArrow];
             [self.thirdSegment animateToState:doubleSegmentMinusState];
-            
+
             secondOriginPoint.y += self.bounds.size.width/2;
             thirdOriginPoint.y += self.bounds.size.width/2;
             break;
         case buttonShareType:
             [self.firstSegment animateToState:doubleSegmentDefaultState];
             [self.secondSegment animateToState:doubleSegmentUpArrow];
-            
+
             secondOriginPoint.y -= self.bounds.size.width/2;
             break;
         case buttonDownBasicType:
@@ -275,11 +277,11 @@
         default:
             break;
     }
-    
+
     [self.firstSegment animatePositionToPoint:firstOriginPoint];
     [self.secondSegment animatePositionToPoint:secondOriginPoint];
     [self.thirdSegment animatePositionToPoint:thirdOriginPoint];
-    
+
     self.currentButtonType = finalType;
 }
 
