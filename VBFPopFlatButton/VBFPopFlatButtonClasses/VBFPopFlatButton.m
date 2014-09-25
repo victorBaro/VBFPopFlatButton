@@ -8,11 +8,13 @@
 
 #import "VBFPopFlatButton.h"
 #import "VBFDoubleSegment.h"
+#import "POP.h"
 
 @interface VBFPopFlatButton () {
     NSMutableDictionary *_tintColors;
 }
 
+@property (nonatomic) CGRect initialFrame;
 @property (nonatomic, strong) VBFDoubleSegment *firstSegment;
 @property (nonatomic, strong) VBFDoubleSegment *secondSegment;
 @property (nonatomic, strong) VBFDoubleSegment *thirdSegment; //Only used for menu button
@@ -30,11 +32,14 @@
 - (instancetype) initWithFrame:(CGRect)frame buttonType:(FlatButtonType)initType buttonStyle:(FlatButtonStyle)bStyle {
     self = [super initWithFrame:frame];
     if (self) {
+        self.initialFrame = frame;
         self.currentButtonType = initType;
         self.currentButtonStyle = bStyle;
         self.lineThickness = 2;
         self.lineRadius = 0;
         self.tintColor = [UIColor whiteColor];
+        self.tapScaling = NO;
+        
         [self commonSetup];
     }
     return self;
@@ -145,6 +150,7 @@
 
 - (void)setHighlighted:(BOOL)highlighted {
     [super setHighlighted:highlighted];
+    [self tapScaleDown:highlighted];
     [self updateState];
 }
 
@@ -155,6 +161,28 @@
 
 - (void)updateState {
     self.tintColor = [self tintColorForState:self.state];
+}
+
+- (void)tapScaleDown:(BOOL)down
+{
+    if(self.tapScaling) {
+        POPSpringAnimation *scaleAnimation = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerScaleXY];
+        
+        scaleAnimation.springBounciness = 5.0f;
+        scaleAnimation.springSpeed = 10.0f;
+        
+        if(down) {
+            scaleAnimation.fromValue  = [NSValue valueWithCGSize:CGSizeMake(1.0f, 1.0f)];
+            scaleAnimation.toValue  = [NSValue valueWithCGSize:CGSizeMake(0.8, 0.8f)];
+        }
+        else {
+            scaleAnimation.toValue  = [NSValue valueWithCGSize:CGSizeMake(1.0f, 1.0f)];
+            scaleAnimation.fromValue  = [NSValue valueWithCGSize:CGSizeMake(0.8, 0.8f)];
+        }
+        
+        [self.layer pop_addAnimation:scaleAnimation
+                              forKey:@"scale"];
+    }
 }
 
 - (UIColor *)tintColorForState:(UIControlState)state {
@@ -187,8 +215,9 @@
     self.firstSegment.opacity = 1.0f;
     self.secondSegment.opacity = 1.0f;
     self.thirdSegment.opacity = 0.0f;
-    CGPoint firstOriginPoint = CGPointMake(CGRectGetWidth(self.frame)/2,
-                                           CGRectGetHeight(self.frame)/2);
+    CGPoint firstOriginPoint = CGPointMake(CGRectGetWidth(self.initialFrame)/2,
+                                           CGRectGetHeight(self.initialFrame)/2);
+    
     CGPoint secondOriginPoint = firstOriginPoint;
     CGPoint thirdOriginPoint = firstOriginPoint;
     
@@ -202,7 +231,7 @@
             [self.secondSegment animateToState:doubleSegmentLessThanState];
             self.secondSegment.opacity = 0.0;
             
-            CGFloat hAmount = CGRectGetWidth(self.frame)/5;
+            CGFloat hAmount = CGRectGetWidth(self.initialFrame)/5;
             firstOriginPoint.x -= hAmount;
             secondOriginPoint.x -= hAmount;
             break;
@@ -219,7 +248,7 @@
             [self.secondSegment animateToState:doubleSegmentMoreThanState];
             self.secondSegment.opacity = 0.0;
             
-            CGFloat horAmount = CGRectGetWidth(self.frame)/5;
+            CGFloat horAmount = CGRectGetWidth(self.initialFrame)/5;
             firstOriginPoint.x += horAmount;
             secondOriginPoint.x += horAmount;
             break;
@@ -230,7 +259,7 @@
             [self.thirdSegment animateToState:doubleSegmentMinusState];
             
             
-            CGFloat verticalAmount = CGRectGetHeight(self.frame)/3;
+            CGFloat verticalAmount = CGRectGetHeight(self.initialFrame)/3;
             thirdOriginPoint.y -= verticalAmount;
             secondOriginPoint.y += verticalAmount;
             break;
@@ -244,14 +273,14 @@
             [self.secondSegment animateToState:doubleSegmentDownArrow];
             [self.thirdSegment animateToState:doubleSegmentMinusState];
             
-            secondOriginPoint.y += self.bounds.size.width/2;
-            thirdOriginPoint.y += self.bounds.size.width/2;
+            secondOriginPoint.y += self.initialFrame.size.width/2;
+            thirdOriginPoint.y += self.initialFrame.size.width/2;
             break;
         case buttonShareType:
             [self.firstSegment animateToState:doubleSegmentDefaultState];
             [self.secondSegment animateToState:doubleSegmentUpArrow];
             
-            secondOriginPoint.y -= self.bounds.size.width/2;
+            secondOriginPoint.y -= self.initialFrame.size.width/2;
             break;
         case buttonDownBasicType:
             [self.firstSegment animateToState:doubleSegmentDownArrow];
@@ -263,7 +292,7 @@
         case buttonDownArrowType:
             [self.firstSegment animateToState:doubleSegmentDefaultState];
             [self.secondSegment animateToState:doubleSegmentDownArrow];
-            secondOriginPoint.y += self.bounds.size.width/2;
+            secondOriginPoint.y += self.initialFrame.size.width/2;
             break;
         case buttonUpBasicType:
             [self.firstSegment animateToState:doubleSegmentUpArrow];

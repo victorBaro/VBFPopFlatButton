@@ -38,6 +38,7 @@ typedef NS_ENUM(NSInteger, FlatButtonStyle) {
 
 @property (nonatomic) CGFloat lineThickness;
 @property (nonatomic) CGFloat lineRadius;
+@property (nonatomic, assign) BOOL tapScaling;
 @property (nonatomic, strong) UIColor *linesColor __deprecated_msg("Deprecated in favor of the tintColor property.");
 
 - (void)setTintColor:(UIColor *)tintColor forState:(UIControlState)state;
