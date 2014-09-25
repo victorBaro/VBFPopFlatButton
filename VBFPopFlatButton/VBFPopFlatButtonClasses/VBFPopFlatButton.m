@@ -67,7 +67,7 @@
 
 - (void) commonSetup {
     _mainLayer = [CALayer layer];
-    _mainLayer.frame = self.initialFrame;
+    _mainLayer.frame = (CGRect) {CGPointZero, self.initialFrame.size};
     
     [self.layer addSublayer:_mainLayer];
     
@@ -184,12 +184,10 @@
         scaleAnimation.springSpeed = 10.0f;
         
         if(down) {
-            scaleAnimation.fromValue  = [NSValue valueWithCGSize:CGSizeMake(1.0f, 1.0f)];
             scaleAnimation.toValue  = [NSValue valueWithCGSize:CGSizeMake(0.8, 0.8f)];
         }
         else {
             scaleAnimation.toValue  = [NSValue valueWithCGSize:CGSizeMake(1.0f, 1.0f)];
-            scaleAnimation.fromValue  = [NSValue valueWithCGSize:CGSizeMake(0.8, 0.8f)];
         }
         
         [self.mainLayer pop_addAnimation:scaleAnimation
