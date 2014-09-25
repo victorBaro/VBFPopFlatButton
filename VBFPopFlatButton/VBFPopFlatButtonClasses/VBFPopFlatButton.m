@@ -18,6 +18,7 @@
 @property (nonatomic, strong) VBFDoubleSegment *firstSegment;
 @property (nonatomic, strong) VBFDoubleSegment *secondSegment;
 @property (nonatomic, strong) VBFDoubleSegment *thirdSegment; //Only used for menu button
+@property (nonatomic, strong) CALayer *mainLayer;
 @property (nonatomic, strong) CALayer *bckgLayer;
 @end
 
@@ -48,30 +49,38 @@
 - (id)initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
     if (self) {
+        self.initialFrame = frame;
         self.currentButtonType = buttonDefaultType;
         self.currentButtonStyle = buttonPlainStyle;
         self.lineThickness = 2;
         self.lineRadius = 0;
         self.tintColor = [UIColor whiteColor];
+        self.tapScaling = NO;
+        
         [self commonSetup];
     }
     return self;
 }
 
 - (void) commonSetup {
+    _mainLayer = [CALayer layer];
+    _mainLayer.frame = self.initialFrame;
+    
+    [self.layer addSublayer:_mainLayer];
+    
     _firstSegment = [[VBFDoubleSegment alloc]initWithLength:self.frame.size.width
                                                   thickness:self.lineThickness
                                                      radius:self.lineRadius
                                                       color:self.tintColor
                                                initialState:doubleSegmentDefaultState];
-    [self.layer addSublayer:_firstSegment];
+    [self.mainLayer addSublayer:_firstSegment];
     
     _secondSegment = [[VBFDoubleSegment alloc]initWithLength:self.frame.size.width
                                                    thickness:self.lineThickness
                                                       radius:self.lineRadius
                                                        color:self.tintColor
                                                 initialState:doubleSegmentDefaultState];
-    [self.layer addSublayer:_secondSegment];
+    [self.mainLayer addSublayer:_secondSegment];
     
     _thirdSegment = [[VBFDoubleSegment alloc]initWithLength:self.frame.size.width
                                                   thickness:self.lineThickness
@@ -79,7 +88,7 @@
                                                       color:self.tintColor
                                                initialState:doubleSegmentMinusState];
     _thirdSegment.opacity = 0.0;
-    [self.layer addSublayer:_thirdSegment];
+    [self.mainLayer addSublayer:_thirdSegment];
     
     if (self.currentButtonStyle == buttonRoundedStyle) {
         self.bckgLayer = [CALayer layer];
@@ -88,7 +97,7 @@
         self.bckgLayer.cornerRadius = self.bckgLayer.bounds.size.width/2;
         self.bckgLayer.backgroundColor = self.roundBackgroundColor.CGColor;
         
-        [self.layer insertSublayer:self.bckgLayer below:_firstSegment];
+        [self.mainLayer insertSublayer:self.bckgLayer below:_firstSegment];
         
     }
     
@@ -180,8 +189,8 @@
             scaleAnimation.fromValue  = [NSValue valueWithCGSize:CGSizeMake(0.8, 0.8f)];
         }
         
-        [self.layer pop_addAnimation:scaleAnimation
-                              forKey:@"scale"];
+        [self.mainLayer pop_addAnimation:scaleAnimation
+                                  forKey:@"scale"];
     }
 }
 
