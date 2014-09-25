@@ -32,6 +32,7 @@
     self.flatRoundedButton.roundBackgroundColor = [UIColor whiteColor];
     self.flatRoundedButton.lineThickness = 3;
     self.flatRoundedButton.lineRadius = 1;
+    self.flatRoundedButton.tapScaling = YES;
     self.flatRoundedButton.tintColor = [UIColor flatPeterRiverColor];
     [self.flatRoundedButton addTarget:self
                                action:@selector(flatRoundedButtonPressed)
