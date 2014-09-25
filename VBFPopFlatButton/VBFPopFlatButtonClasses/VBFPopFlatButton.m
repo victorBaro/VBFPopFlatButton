@@ -49,7 +49,7 @@
 - (id)initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
     if (self) {
-        self.initialFrame = frame;
+        self.initialFrame = self.frame;
         self.currentButtonType = buttonDefaultType;
         self.currentButtonStyle = buttonPlainStyle;
         self.lineThickness = 2;
