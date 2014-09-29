@@ -166,6 +166,31 @@
             toValueTop = -M_PI_4 * 3;
             toValueBottom = -M_PI_4;
             break;
+        case doubleSegmentSlashState45:
+            toValueTop = -M_PI_4;
+            toValueBottom = -M_PI_4;
+            break;
+        case doubleSegmentBackSlashState45:
+            toValueTop = M_PI_4;
+            toValueBottom = M_PI_4;
+            break;
+        case doubleSegmentSlashState30:
+            toValueTop = -M_PI_2/3;
+            toValueBottom = -M_PI_2/3;
+            break;
+        case doubleSegmentBackSlashState30:
+            toValueTop = M_PI_2/3;
+            toValueBottom = M_PI_2/3;
+            break;
+        case doubleSegmentSlashState60:
+            toValueTop = -M_PI/3;
+            toValueBottom = -M_PI/3;
+            break;
+        case doubleSegmentBackSlashState60:
+            toValueTop = M_PI/3;
+            toValueBottom = M_PI/3;
+            break;
+
         default:
             break;
     }
