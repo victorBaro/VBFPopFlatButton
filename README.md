@@ -1,7 +1,7 @@
 VBFPopFlatButton
 ================
 
-Flat button with 9 different states and 2 types animated using [pop](https://github.com/facebook/pop).
+Flat button with 17 different states and 2 types animated using [pop](https://github.com/facebook/pop).
 
 These are some examples of both types in different states:
 
@@ -60,7 +60,7 @@ In both cases, you can use the following method to animate the button from one s
     [flatRoundedButton animateToType:nextType];
 
 
-This are the 9 types avaiable for the button:
+This are the 17 types avaiable for the button:
 
     typedef NS_ENUM(NSInteger, FlatButtonType) {
     buttonDefaultType,             // Vertical line
@@ -71,8 +71,16 @@ This are the 9 types avaiable for the button:
     buttonForwardType,             // >
     buttonMenuType,                 // 3horizontal lines
     buttonDownloadType,
-    buttonShareType
-    };
+    buttonShareType,
+    buttonDownBasicType,
+    buttonUpBasicType,
+    buttonDownArrowType,
+    buttonPausedType,
+    buttonRightTriangleType,
+    buttonLeftTriangleType,
+    buttonUpTriangleType,
+    buttonDownTriangleType,
+};
 
 More types are welcomed :D
 
