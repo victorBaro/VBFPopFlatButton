@@ -29,7 +29,7 @@ Here there is some example code on how to use the button:
 **Flat Rounded Style**
 
     //Example
-        self.flatRoundedButton = [[VBFPopFlatButton alloc]initWithFrame:CGRectMake(100, 150, 30, 30)
+    self.flatRoundedButton = [[VBFPopFlatButton alloc]initWithFrame:CGRectMake(100, 150, 30, 30)
                                                   buttonType:buttonMenuType
                                                  buttonStyle:buttonRoundedStyle];
     self.flatRoundedButton.roundBackgroundColor = [UIColor whiteColor];
@@ -44,7 +44,7 @@ Here there is some example code on how to use the button:
 **Flat Plain Style**
 
     //Example
-        self.flatPlainButton = [[VBFPopFlatButton alloc]initWithFrame:CGRectMake(200, 150, 30, 30)
+    self.flatPlainButton = [[VBFPopFlatButton alloc]initWithFrame:CGRectMake(200, 150, 30, 30)
                                                        buttonType:buttonAddType
                                                       buttonStyle:buttonPlainStyle];
     self.flatPlainButton.lineThickness = 2;
@@ -79,8 +79,7 @@ This are the 17 types avaiable for the button:
     buttonRightTriangleType,
     buttonLeftTriangleType,
     buttonUpTriangleType,
-    buttonDownTriangleType,
-};
+    buttonDownTriangleType,};
 
 More types are welcomed :D
 
