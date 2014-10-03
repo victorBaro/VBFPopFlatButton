@@ -10,29 +10,29 @@
 	<string>VBFPopFlatButton</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>A9382D58-F924-4E60-8E1E-4F41803E2677</key>
+		<key>812B8E635CF39CD906DE8FC7A4B95C026D170F6D</key>
 		<string>ssh://github.com/iBaro/VBFPopFlatButton.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>VBFPopFlatButton.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>A9382D58-F924-4E60-8E1E-4F41803E2677</key>
+		<key>812B8E635CF39CD906DE8FC7A4B95C026D170F6D</key>
 		<string>..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>ssh://github.com/iBaro/VBFPopFlatButton.git</string>
 	<key>IDESourceControlProjectVersion</key>
-	<integer>110</integer>
+	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>A9382D58-F924-4E60-8E1E-4F41803E2677</string>
+	<string>812B8E635CF39CD906DE8FC7A4B95C026D170F6D</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>A9382D58-F924-4E60-8E1E-4F41803E2677</string>
+			<string>812B8E635CF39CD906DE8FC7A4B95C026D170F6D</string>
 			<key>IDESourceControlWCCName</key>
 			<string>VBFPopFlatButton</string>
 		</dict>

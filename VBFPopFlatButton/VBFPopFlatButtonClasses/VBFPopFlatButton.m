@@ -207,8 +207,8 @@
             secondOriginPoint.x -= hAmount;
             break;
         case buttonCloseType:
-            [self.firstSegment animateToState:doubleSegmentLessThanState];
-            [self.secondSegment animateToState:doubleSegmentMoreThanState];
+            [self.firstSegment animateToState:doubleSegmentSlashState45];
+            [self.secondSegment animateToState:doubleSegmentBackSlashState45];
             break;
         case buttonDefaultType:
             [self.firstSegment animateToState:doubleSegmentDefaultState];
@@ -272,6 +272,59 @@
 
             firstOriginPoint.y -= CGRectGetHeight(self.firstSegment.frame)/5;
             break;
+        case buttonPausedType:
+            [self.firstSegment animateToState:doubleSegmentDefaultState];
+            [self.secondSegment animateToState:doubleSegmentDefaultState];
+            CGFloat horizontalAmount = CGRectGetHeight(self.frame)/5;
+            firstOriginPoint.x -= horizontalAmount;
+            secondOriginPoint.x += horizontalAmount;
+            break;
+        case buttonRightTriangleType:
+            self.thirdSegment.opacity = 1.0;
+            [self.firstSegment animateToState:doubleSegmentSlashState60];
+            [self.secondSegment animateToState:doubleSegmentBackSlashState60];
+            [self.thirdSegment animateToState:doubleSegmentDefaultState];
+            firstOriginPoint.y -= self.bounds.size.width * 0.24;
+            secondOriginPoint.y += self.bounds.size.width * 0.24;
+            firstOriginPoint.x += self.bounds.size.width/8;
+            secondOriginPoint.x += self.bounds.size.width/8;
+            thirdOriginPoint.x -= self.bounds.size.width * 0.30;
+            break;
+        case buttonLeftTriangleType:
+            self.thirdSegment.opacity = 1.0;
+            [self.firstSegment animateToState:doubleSegmentSlashState60];
+            [self.secondSegment animateToState:doubleSegmentBackSlashState60];
+            [self.thirdSegment animateToState:doubleSegmentDefaultState];
+            firstOriginPoint.y += self.bounds.size.width * 0.24;
+            secondOriginPoint.y -= self.bounds.size.width * 0.24;
+            firstOriginPoint.x -= self.bounds.size.width/8;
+            secondOriginPoint.x -= self.bounds.size.width/8;
+            thirdOriginPoint.x += self.bounds.size.width * 0.30;
+            break;
+        case buttonUpTriangleType:
+            self.thirdSegment.opacity = 1.0;
+            [self.firstSegment animateToState:doubleSegmentSlashState30];
+            [self.secondSegment animateToState:doubleSegmentBackSlashState30];
+            [self.thirdSegment animateToState:doubleSegmentMinusState];
+            firstOriginPoint.x += self.bounds.size.width * 0.24;
+            secondOriginPoint.x -= self.bounds.size.width * 0.24;
+            firstOriginPoint.y -= self.bounds.size.width/8;
+            secondOriginPoint.y -= self.bounds.size.width/8;
+            thirdOriginPoint.y += self.bounds.size.width * 0.30;
+            break;
+        case buttonDownTriangleType:
+            self.thirdSegment.opacity = 1.0;
+            [self.firstSegment animateToState:doubleSegmentSlashState30];
+            [self.secondSegment animateToState:doubleSegmentBackSlashState30];
+            [self.thirdSegment animateToState:doubleSegmentMinusState];
+            firstOriginPoint.x -= self.bounds.size.width * 0.24;
+            secondOriginPoint.x += self.bounds.size.width * 0.24;
+            firstOriginPoint.y += self.bounds.size.width/8;
+            secondOriginPoint.y += self.bounds.size.width/8;
+            thirdOriginPoint.y -= self.bounds.size.width * 0.30;
+            break;
+
+
         default:
             break;
     }
