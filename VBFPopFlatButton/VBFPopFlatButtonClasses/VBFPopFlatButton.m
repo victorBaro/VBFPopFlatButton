@@ -207,8 +207,8 @@
             secondOriginPoint.x -= hAmount;
             break;
         case buttonCloseType:
-            [self.firstSegment animateToState:doubleSegmentSlashState45];
-            [self.secondSegment animateToState:doubleSegmentBackSlashState45];
+            [self.firstSegment animateToState:doubleSegmentLessThanState];
+            [self.secondSegment animateToState:doubleSegmentMoreThanState];
             break;
         case buttonDefaultType:
             [self.firstSegment animateToState:doubleSegmentDefaultState];
