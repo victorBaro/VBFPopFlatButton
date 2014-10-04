@@ -22,7 +22,12 @@ typedef NS_ENUM(NSInteger, FlatButtonType) {
     buttonShareType,
     buttonDownBasicType,
     buttonUpBasicType,
-    buttonDownArrowType
+    buttonDownArrowType,
+    buttonPausedType,
+    buttonRightTriangleType,
+    buttonLeftTriangleType,
+    buttonUpTriangleType,
+    buttonDownTriangleType,
 };
 
 typedef NS_ENUM(NSInteger, FlatButtonStyle) {

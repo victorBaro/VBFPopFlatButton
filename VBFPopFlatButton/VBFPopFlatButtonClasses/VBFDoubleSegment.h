@@ -22,7 +22,15 @@ typedef NS_ENUM(NSInteger, DoubleSegmentState) {
     doubleSegmentMoreThanState,         // >
     doubleSegmentUpArrow,               // ^
     doubleSegmentDownArrow,             // Before symol upside-down
-    doubleSegmentMinusState             // --
+    doubleSegmentMinusState,            // --
+    doubleSegmentSlashState45,          // \                         /
+    doubleSegmentBackSlashState45,      // /
+    doubleSegmentSlashState30,          // \                         /
+    doubleSegmentBackSlashState30,       // /
+    doubleSegmentSlashState60,          // \                         /
+    doubleSegmentBackSlashState60       // /
+
+    
 };
 
 @property (nonatomic) DoubleSegmentState segmentState;

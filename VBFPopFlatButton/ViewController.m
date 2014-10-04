@@ -10,6 +10,8 @@
 #import "UIColor+FlatColors.h"
 #import "VBFPopFlatButton.h"
 
+#define NUM_BUTTON_STATES 17
+
 @interface ViewController ()
 @property (nonatomic, strong) VBFPopFlatButton *flatRoundedButton;
 @property (nonatomic, strong) VBFPopFlatButton *flatPlainButton;
@@ -48,23 +50,23 @@
 }
 
 - (IBAction)buttonPressed:(UIButton *)sender {
-    if (sender.tag != 12) {
+    if (sender.tag != NUM_BUTTON_STATES) {
         [self.flatRoundedButton animateToType:sender.tag];
         [self.flatPlainButton animateToType:sender.tag];
     } else {
-        [self.flatRoundedButton animateToType:arc4random()%12];
-        [self.flatPlainButton animateToType:arc4random()%12];
+        [self.flatRoundedButton animateToType:arc4random() % NUM_BUTTON_STATES];
+        [self.flatPlainButton animateToType:arc4random() % NUM_BUTTON_STATES];
     }
 }
 
 - (void) flatRoundedButtonPressed {
     NSLog(@"Button pressed");
-    [self.flatRoundedButton animateToType:arc4random()%12];
+    [self.flatRoundedButton animateToType:arc4random() % NUM_BUTTON_STATES];
 }
 
 - (void) flatPlainButtonPressed {
     NSLog(@"Button pressed");
-    [self.flatPlainButton animateToType:arc4random()%12];
+    [self.flatPlainButton animateToType:arc4random() % NUM_BUTTON_STATES];
 }
 
 @end
