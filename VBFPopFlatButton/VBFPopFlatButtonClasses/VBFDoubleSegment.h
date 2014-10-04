@@ -39,14 +39,13 @@ typedef NS_ENUM(NSInteger, DoubleSegmentState) {
 @property (nonatomic) CGFloat lineThickness;
 @property (nonatomic) CGFloat lineRadius;
 
-
 - (instancetype)initWithLength:(CGFloat)length
-           thickness:(CGFloat)lineThickness
-              radius:(CGFloat)lineRadius
-               color:(UIColor *)lineColor
-        initialState:(DoubleSegmentState)initState;
+                     thickness:(CGFloat)lineThickness
+                        radius:(CGFloat)lineRadius
+                         color:(UIColor *)lineColor
+                  initialState:(DoubleSegmentState)initState;
 
-- (void) animateToState:(DoubleSegmentState)finalState;
-- (void) animatePositionToPoint:(CGPoint)finalPosition;
+- (void) moveToState:(DoubleSegmentState)finalState animated:(BOOL)animated;
+- (void) movePositionToPoint:(CGPoint)finalPosition animated:(BOOL)animated;
 
 @end

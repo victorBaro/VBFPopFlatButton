@@ -43,15 +43,25 @@ typedef NS_ENUM(NSInteger, FlatButtonStyle) {
 
 @property (nonatomic) CGFloat lineThickness;
 @property (nonatomic) CGFloat lineRadius;
+
 @property (nonatomic, strong) UIColor *linesColor __deprecated_msg("Deprecated in favor of the tintColor property.");
+
+
+
+
+//////////////////////////////
+// DESIGNATED INITIALIZER   //
+//////////////////////////////
+- (instancetype)initWithFrame:(CGRect)frame
+                   buttonType:(FlatButtonType)initType
+                  buttonStyle:(FlatButtonStyle)bStyle
+        animateToInitialState:(BOOL)animateToInitialState; // Feature requested by users -- Set to NO so the button will show initial position type with no animation
+
+////////////////////////////////
+
 
 - (void)setTintColor:(UIColor *)tintColor forState:(UIControlState)state;
 - (UIColor *)tintColorForState:(UIControlState)state;
-
-- (instancetype)initWithFrame:(CGRect)frame
-                   buttonType:(FlatButtonType)initType
-                  buttonStyle:(FlatButtonStyle)bStyle;
-
 - (void)animateToType:(FlatButtonType)finalType;
 
 @end

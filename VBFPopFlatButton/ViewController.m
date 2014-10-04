@@ -25,9 +25,10 @@
     // Do any additional setup after loading the view, typically from a nib.
     self.view.backgroundColor = [UIColor flatPeterRiverColor];
     
-    self.flatRoundedButton = [[VBFPopFlatButton alloc]initWithFrame:CGRectMake(100, 150, 30, 30)
+    self.flatRoundedButton = [[VBFPopFlatButton alloc]initWithFrame:CGRectMake(100, 100, 30, 30)
                                                   buttonType:buttonMenuType
-                                                 buttonStyle:buttonRoundedStyle];
+                                                 buttonStyle:buttonRoundedStyle
+                                              animateToInitialState:YES];
     self.flatRoundedButton.roundBackgroundColor = [UIColor whiteColor];
     self.flatRoundedButton.lineThickness = 3;
     self.flatRoundedButton.lineRadius = 1;
@@ -38,9 +39,10 @@
     [self.view addSubview:self.flatRoundedButton];
     
     
-    self.flatPlainButton = [[VBFPopFlatButton alloc]initWithFrame:CGRectMake(200, 150, 30, 30)
+    self.flatPlainButton = [[VBFPopFlatButton alloc]initWithFrame:CGRectMake(200, 100, 30, 30)
                                                        buttonType:buttonAddType
-                                                      buttonStyle:buttonPlainStyle];
+                                                      buttonStyle:buttonPlainStyle
+                                            animateToInitialState:NO];
     self.flatPlainButton.lineThickness = 2;
     self.flatPlainButton.tintColor = [UIColor whiteColor];
     [self.flatPlainButton addTarget:self

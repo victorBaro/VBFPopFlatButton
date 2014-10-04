@@ -40,7 +40,7 @@
                                 length,
                                 length);
         [self setupLines];
-        [self animateToState:initState];
+        [self moveToState:initState animated:NO];
     }
     return self;
 }
@@ -120,7 +120,7 @@
     _lineRadius = lineRadius;
 }
 
-- (void) animateToState:(DoubleSegmentState)finalState {
+- (void) moveToState:(DoubleSegmentState)finalState animated:(BOOL)animated {
     float toValueTop = 0.0;
     float toValueBottom = 0.0;
     
@@ -194,15 +194,24 @@
         default:
             break;
     }
-    
-    [self addSpringRotationToLayer:self.topLine toValue:toValueTop];
-    [self addSpringRotationToLayer:self.bottomLine toValue:toValueBottom];
+    if (animated) {
+        [self addSpringRotationToLayer:self.topLine toValue:toValueTop];
+        [self addSpringRotationToLayer:self.bottomLine toValue:toValueBottom];
+    } else {
+        self.topLine.transform = CATransform3DMakeRotation(toValueTop, 0, 0, 1);
+        self.bottomLine.transform = CATransform3DMakeRotation(toValueBottom, 0, 0, 1);
+    }
 }
 
-- (void)animatePositionToPoint:(CGPoint)finalPosition {
-    NSValue *toPoint = [NSValue valueWithCGPoint:finalPosition];
-    [self addSpringTranslationToLayer:self.topLine toValue:toPoint];
-    [self addSpringTranslationToLayer:self.bottomLine toValue:toPoint];
+- (void)movePositionToPoint:(CGPoint)finalPosition animated:(BOOL)animated{
+    if (animated) {
+        NSValue *toPoint = [NSValue valueWithCGPoint:finalPosition];
+        [self addSpringTranslationToLayer:self.topLine toValue:toPoint];
+        [self addSpringTranslationToLayer:self.bottomLine toValue:toPoint];
+    } else {
+        self.topLine.position = finalPosition;
+        self.bottomLine.position = finalPosition;
+    }
 }
 
 
