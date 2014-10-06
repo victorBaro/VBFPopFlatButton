@@ -80,26 +80,28 @@
     [self.layer addSublayer:_thirdSegment];
     
     if (self.currentButtonStyle == buttonRoundedStyle) {
-        self.bckgLayer = [CALayer layer];
-        CGFloat amount = self.frame.size.width / 3;
-        self.bckgLayer.frame = CGRectInset(self.bounds, -amount, -amount);
-        self.bckgLayer.cornerRadius = self.bckgLayer.bounds.size.width/2;
-        self.bckgLayer.backgroundColor = self.roundBackgroundColor.CGColor;
-        
-        [self.layer insertSublayer:self.bckgLayer below:_firstSegment];
-        
+        [self setupBackgroundLayer];
     }
     
     [self animateToType:self.currentButtonType];
 }
 
+- (void)setupBackgroundLayer {
+    self.bckgLayer = [CALayer layer];
+    CGFloat amount = self.frame.size.width / 3;
+    self.bckgLayer.frame = CGRectInset(self.bounds, -amount, -amount);
+    self.bckgLayer.cornerRadius = self.bckgLayer.bounds.size.width/2;
+    self.bckgLayer.backgroundColor = self.roundBackgroundColor.CGColor;
 
+    [self.layer insertSublayer:self.bckgLayer below:_firstSegment];
+}
 
 - (void)setRoundBackgroundColor:(UIColor *)roundBackgroundColor {
     if (_currentButtonStyle == buttonRoundedStyle) {
-        if (self.bckgLayer) {
-            self.bckgLayer.backgroundColor = roundBackgroundColor.CGColor;
+        if (!self.bckgLayer) {
+            [self setupBackgroundLayer];
         }
+        self.bckgLayer.backgroundColor = roundBackgroundColor.CGColor;
     }
 }
 - (void)setLineThickness:(CGFloat)lineThickness {
