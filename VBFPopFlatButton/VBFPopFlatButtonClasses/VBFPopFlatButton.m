@@ -326,8 +326,16 @@
             secondOriginPoint.y += self.bounds.size.width/8;
             thirdOriginPoint.y -= self.bounds.size.width * 0.30;
             break;
-
-
+        case buttonOkType:
+            self.thirdSegment.opacity = 0.0;
+            [self.firstSegment moveToState:doubleSegmentBackSlashState45 animated:self.animateToStartPosition];
+            [self.secondSegment moveToState:doubleSegmentDownArrow animated:self.animateToStartPosition];
+            firstOriginPoint.y 	+= self.bounds.size.width/6;
+            secondOriginPoint.y += self.bounds.size.width/2;
+            firstOriginPoint.x  += self.bounds.size.width * 0.19;
+            secondOriginPoint.x -= self.bounds.size.width * 0.14;
+            break;
+            
         default:
             break;
     }
