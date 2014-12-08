@@ -28,6 +28,9 @@ typedef NS_ENUM(NSInteger, FlatButtonType) {
     buttonLeftTriangleType,
     buttonUpTriangleType,
     buttonDownTriangleType,
+    buttonRewindType,
+    buttonFastForwardType,
+    buttonSquareType,
 };
 
 typedef NS_ENUM(NSInteger, FlatButtonStyle) {

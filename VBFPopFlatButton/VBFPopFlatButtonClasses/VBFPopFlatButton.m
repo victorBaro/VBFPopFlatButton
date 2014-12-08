@@ -326,6 +326,28 @@
             secondOriginPoint.y += self.bounds.size.width/8;
             thirdOriginPoint.y -= self.bounds.size.width * 0.30;
             break;
+        case buttonRewindType:
+            [self.firstSegment moveToState:doubleSegmentLessThanState animated:self.animateToStartPosition];
+            [self.secondSegment moveToState:doubleSegmentLessThanState animated:self.animateToStartPosition];
+            
+            firstOriginPoint.x -= self.bounds.size.width * 0.4;
+            break;
+        case buttonFastForwardType:
+            [self.firstSegment moveToState:doubleSegmentMoreThanState animated:self.animateToStartPosition];
+            [self.secondSegment moveToState:doubleSegmentMoreThanState animated:self.animateToStartPosition];
+            
+            firstOriginPoint.x += self.bounds.size.width * 0.4;
+            break;
+        case buttonSquareType:
+            [self.firstSegment moveToState:doubleSegmentFourthQuadrantState animated:self.animateToStartPosition];
+            [self.secondSegment moveToState:doubleSegmentSecondQuadrantState animated:self.animateToStartPosition];
+            
+            CGFloat offsetAmount = self.bounds.size.height/4 - self.lineThickness/4;
+            firstOriginPoint.y -= offsetAmount;
+            secondOriginPoint.y += offsetAmount;
+            firstOriginPoint.x -= offsetAmount;
+            secondOriginPoint.x += offsetAmount;
+            break;
 
 
         default:

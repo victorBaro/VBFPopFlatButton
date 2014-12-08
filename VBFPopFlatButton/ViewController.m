@@ -10,7 +10,7 @@
 #import "UIColor+FlatColors.h"
 #import "VBFPopFlatButton.h"
 
-#define NUM_BUTTON_STATES 17
+#define NUM_BUTTON_STATES 20
 
 @interface ViewController ()
 @property (nonatomic, strong) VBFPopFlatButton *flatRoundedButton;
