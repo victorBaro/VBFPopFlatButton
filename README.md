@@ -1,7 +1,7 @@
 VBFPopFlatButton
 ================
 
-Flat button with 20 different states and 2 types animated using [pop](https://github.com/facebook/pop).
+Flat button with 21 different states and 2 types animated using [pop](https://github.com/facebook/pop).
 
 These are some examples of both types in different states:
 
@@ -92,6 +92,7 @@ This are the 20 types avaiable for the button:
     buttonLeftTriangleType,
     buttonUpTriangleType,
     buttonDownTriangleType,
+    buttonOKType,
     buttonRewindType,
     buttonFastForwardType,
     buttonSquareType
