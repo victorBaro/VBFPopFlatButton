@@ -6,7 +6,7 @@ Flat button with 21 different states and 2 types animated using [pop](https://gi
 These are some examples of both types in different states:
 
 
-![Examples](https://github.com/jibeex/VBFPopFlatButton/blob/master/examples.jpg)
+![Examples](https://raw.githubusercontent.com/iBaro/VBFPopFlatButton/master/examples.jpg)
 
 And here you can see them animated:
 
