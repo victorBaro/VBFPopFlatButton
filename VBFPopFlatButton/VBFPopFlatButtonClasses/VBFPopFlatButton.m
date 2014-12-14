@@ -94,26 +94,28 @@
     [self.mainLayer addSublayer:_thirdSegment];
     
     if (self.currentButtonStyle == buttonRoundedStyle) {
-        self.bckgLayer = [CALayer layer];
-        CGFloat amount = self.frame.size.width / 3;
-        self.bckgLayer.frame = CGRectInset(self.bounds, -amount, -amount);
-        self.bckgLayer.cornerRadius = self.bckgLayer.bounds.size.width/2;
-        self.bckgLayer.backgroundColor = self.roundBackgroundColor.CGColor;
-        
-        [self.mainLayer insertSublayer:self.bckgLayer below:_firstSegment];
-        
+        [self setupBackgroundLayer];
     }
     
     [self animateToType:self.currentButtonType];
 }
 
+- (void)setupBackgroundLayer {
+    self.bckgLayer = [CALayer layer];
+    CGFloat amount = self.frame.size.width / 3;
+    self.bckgLayer.frame = CGRectInset(self.bounds, -amount, -amount);
+    self.bckgLayer.cornerRadius = self.bckgLayer.bounds.size.width/2;
+    self.bckgLayer.backgroundColor = self.roundBackgroundColor.CGColor;
 
+    [self.layer insertSublayer:self.bckgLayer below:_firstSegment];
+}
 
 - (void)setRoundBackgroundColor:(UIColor *)roundBackgroundColor {
     if (_currentButtonStyle == buttonRoundedStyle) {
-        if (self.bckgLayer) {
-            self.bckgLayer.backgroundColor = roundBackgroundColor.CGColor;
+        if (!self.bckgLayer) {
+            [self setupBackgroundLayer];
         }
+        self.bckgLayer.backgroundColor = roundBackgroundColor.CGColor;
     }
 }
 - (void)setLineThickness:(CGFloat)lineThickness {
@@ -361,6 +363,37 @@
             firstOriginPoint.y += self.bounds.size.width/8;
             secondOriginPoint.y += self.bounds.size.width/8;
             thirdOriginPoint.y -= self.bounds.size.width * 0.30;
+            break;
+        case buttonOkType:
+            self.thirdSegment.opacity = 0.0;
+            [self.firstSegment moveToState:doubleSegmentBackSlashState45 animated:self.animateToStartPosition];
+            [self.secondSegment moveToState:doubleSegmentDownArrow animated:self.animateToStartPosition];
+            firstOriginPoint.y 	+= self.bounds.size.width/6;
+            secondOriginPoint.y += self.bounds.size.width/2;
+            firstOriginPoint.x  += self.bounds.size.width * 0.19;
+            secondOriginPoint.x -= self.bounds.size.width * 0.14;
+            break;
+        case buttonRewindType:
+            [self.firstSegment moveToState:doubleSegmentLessThanState animated:self.animateToStartPosition];
+            [self.secondSegment moveToState:doubleSegmentLessThanState animated:self.animateToStartPosition];
+            
+            firstOriginPoint.x -= self.bounds.size.width * 0.4;
+            break;
+        case buttonFastForwardType:
+            [self.firstSegment moveToState:doubleSegmentMoreThanState animated:self.animateToStartPosition];
+            [self.secondSegment moveToState:doubleSegmentMoreThanState animated:self.animateToStartPosition];
+            
+            firstOriginPoint.x += self.bounds.size.width * 0.4;
+            break;
+        case buttonSquareType:
+            [self.firstSegment moveToState:doubleSegmentFourthQuadrantState animated:self.animateToStartPosition];
+            [self.secondSegment moveToState:doubleSegmentSecondQuadrantState animated:self.animateToStartPosition];
+            
+            CGFloat offsetAmount = self.bounds.size.height/4 - self.lineThickness/4;
+            firstOriginPoint.y -= offsetAmount;
+            secondOriginPoint.y += offsetAmount;
+            firstOriginPoint.x -= offsetAmount;
+            secondOriginPoint.x += offsetAmount;
             break;
 
 

@@ -1,12 +1,12 @@
 VBFPopFlatButton
 ================
 
-Flat button with 17 different states and 2 types animated using [pop](https://github.com/facebook/pop).
+Flat button with 21 different states and 2 types animated using [pop](https://github.com/facebook/pop).
 
 These are some examples of both types in different states:
 
 
-![Examples](https://github.com/jibeex/VBFPopFlatButton/blob/master/examples.jpg)
+![Examples](https://raw.githubusercontent.com/iBaro/VBFPopFlatButton/master/examples.jpg)
 
 And here you can see them animated:
 
@@ -31,7 +31,8 @@ Here there is some example code on how to use the button:
     //Example
     self.flatRoundedButton = [[VBFPopFlatButton alloc]initWithFrame:CGRectMake(100, 150, 30, 30)
                                                   buttonType:buttonMenuType
-                                                 buttonStyle:buttonRoundedStyle];
+                                                 buttonStyle:buttonRoundedStyle]
+                                                 animateToInitialState:YES;
     self.flatRoundedButton.roundBackgroundColor = [UIColor whiteColor];
     self.flatRoundedButton.lineThickness = 2;
     self.flatRoundedButton.tintColor = [UIColor flatPeterRiverColor];
@@ -46,7 +47,8 @@ Here there is some example code on how to use the button:
     //Example
     self.flatPlainButton = [[VBFPopFlatButton alloc]initWithFrame:CGRectMake(200, 150, 30, 30)
                                                        buttonType:buttonAddType
-                                                      buttonStyle:buttonPlainStyle];
+                                                      buttonStyle:buttonPlainStyle
+                                                      animateToInitialState:NO];
     self.flatPlainButton.lineThickness = 2;
     self.flatPlainButton.tintColor = [UIColor whiteColor];
     [self.flatPlainButton addTarget:self
@@ -54,13 +56,23 @@ Here there is some example code on how to use the button:
                    forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.flatPlainButton];
 
+**Requested feature added on 0.0.5**
+The designated initializer has changed to:
+
+        - (instancetype)initWithFrame:(CGRect)frame 
+                        buttonType:(FlatButtonType)initType 
+                       buttonStyle:(FlatButtonStyle)bStyle 
+            animateToInitialState:(BOOL)animateToInitialState;  
+
+Adding the last 'animateToInitialState' boolean. Sending YES, the button will perform as in older versions (will animate on viewWillAppear from original type, represented as vertical line, to your initial type). Sending NO, the button will be presented using initial type with no animation on presentation.
+
 
 In both cases, you can use the following method to animate the button from one state to the next:
 
     [flatRoundedButton animateToType:nextType];
 
 
-This are the 17 types avaiable for the button:
+This are the 20 types avaiable for the button:
 
     typedef NS_ENUM(NSInteger, FlatButtonType) {
     buttonDefaultType,             // Vertical line
@@ -79,7 +91,12 @@ This are the 17 types avaiable for the button:
     buttonRightTriangleType,
     buttonLeftTriangleType,
     buttonUpTriangleType,
-    buttonDownTriangleType,};
+    buttonDownTriangleType,
+    buttonOKType,
+    buttonRewindType,
+    buttonFastForwardType,
+    buttonSquareType
+    };
 
 More types are welcomed :D
 
