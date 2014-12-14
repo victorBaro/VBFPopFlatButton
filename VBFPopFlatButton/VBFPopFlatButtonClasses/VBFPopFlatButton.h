@@ -22,7 +22,12 @@ typedef NS_ENUM(NSInteger, FlatButtonType) {
     buttonShareType,
     buttonDownBasicType,
     buttonUpBasicType,
-    buttonDownArrowType
+    buttonDownArrowType,
+    buttonPausedType,
+    buttonRightTriangleType,
+    buttonLeftTriangleType,
+    buttonUpTriangleType,
+    buttonDownTriangleType,
 };
 
 typedef NS_ENUM(NSInteger, FlatButtonStyle) {
@@ -41,13 +46,22 @@ typedef NS_ENUM(NSInteger, FlatButtonStyle) {
 @property (nonatomic, assign) BOOL tapScaling;
 @property (nonatomic, strong) UIColor *linesColor __deprecated_msg("Deprecated in favor of the tintColor property.");
 
-- (void)setTintColor:(UIColor *)tintColor forState:(UIControlState)state;
-- (UIColor *)tintColorForState:(UIControlState)state;
 
+
+
+//////////////////////////////
+// DESIGNATED INITIALIZER   //
+//////////////////////////////
 - (instancetype)initWithFrame:(CGRect)frame
                    buttonType:(FlatButtonType)initType
-                  buttonStyle:(FlatButtonStyle)bStyle;
+                  buttonStyle:(FlatButtonStyle)bStyle
+        animateToInitialState:(BOOL)animateToInitialState; // Feature requested by users -- Set to NO so the button will show initial position type with no animation
 
+////////////////////////////////
+
+
+- (void)setTintColor:(UIColor *)tintColor forState:(UIControlState)state;
+- (UIColor *)tintColorForState:(UIControlState)state;
 - (void)animateToType:(FlatButtonType)finalType;
 
 @end

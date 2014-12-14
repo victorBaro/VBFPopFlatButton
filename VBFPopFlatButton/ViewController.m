@@ -10,6 +10,8 @@
 #import "UIColor+FlatColors.h"
 #import "VBFPopFlatButton.h"
 
+#define NUM_BUTTON_STATES 17
+
 @interface ViewController ()
 @property (nonatomic, strong) VBFPopFlatButton *flatRoundedButton;
 @property (nonatomic, strong) VBFPopFlatButton *flatPlainButton;
@@ -23,9 +25,10 @@
     // Do any additional setup after loading the view, typically from a nib.
     self.view.backgroundColor = [UIColor flatPeterRiverColor];
     
-    self.flatRoundedButton = [[VBFPopFlatButton alloc]initWithFrame:CGRectMake(100, 150, 30, 30)
+    self.flatRoundedButton = [[VBFPopFlatButton alloc]initWithFrame:CGRectMake(100, 100, 30, 30)
                                                   buttonType:buttonMenuType
-                                                 buttonStyle:buttonRoundedStyle];
+                                                 buttonStyle:buttonRoundedStyle
+                                              animateToInitialState:YES];
     self.flatRoundedButton.roundBackgroundColor = [UIColor whiteColor];
     self.flatRoundedButton.lineThickness = 3;
     self.flatRoundedButton.lineRadius = 1;
@@ -37,9 +40,10 @@
     [self.view addSubview:self.flatRoundedButton];
     
     
-    self.flatPlainButton = [[VBFPopFlatButton alloc]initWithFrame:CGRectMake(200, 150, 30, 30)
+    self.flatPlainButton = [[VBFPopFlatButton alloc]initWithFrame:CGRectMake(200, 100, 30, 30)
                                                        buttonType:buttonAddType
-                                                      buttonStyle:buttonPlainStyle];
+                                                      buttonStyle:buttonPlainStyle
+                                            animateToInitialState:NO];
     self.flatPlainButton.lineThickness = 2;
     self.flatPlainButton.tintColor = [UIColor whiteColor];
     [self.flatPlainButton addTarget:self
@@ -49,23 +53,23 @@
 }
 
 - (IBAction)buttonPressed:(UIButton *)sender {
-    if (sender.tag != 12) {
+    if (sender.tag != NUM_BUTTON_STATES) {
         [self.flatRoundedButton animateToType:sender.tag];
         [self.flatPlainButton animateToType:sender.tag];
     } else {
-        [self.flatRoundedButton animateToType:arc4random()%12];
-        [self.flatPlainButton animateToType:arc4random()%12];
+        [self.flatRoundedButton animateToType:arc4random() % NUM_BUTTON_STATES];
+        [self.flatPlainButton animateToType:arc4random() % NUM_BUTTON_STATES];
     }
 }
 
 - (void) flatRoundedButtonPressed {
     NSLog(@"Button pressed");
-    [self.flatRoundedButton animateToType:arc4random()%12];
+    [self.flatRoundedButton animateToType:arc4random() % NUM_BUTTON_STATES];
 }
 
 - (void) flatPlainButtonPressed {
     NSLog(@"Button pressed");
-    [self.flatPlainButton animateToType:arc4random()%12];
+    [self.flatPlainButton animateToType:arc4random() % NUM_BUTTON_STATES];
 }
 
 @end
