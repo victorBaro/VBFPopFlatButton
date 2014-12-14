@@ -40,7 +40,6 @@
         self.lineThickness = 2;
         self.lineRadius = 0;
         self.animateToStartPosition = animateToInitialState;
-        self.tintColor = [UIColor whiteColor];
         self.tapScaling = NO;
         
         [self commonSetup];
@@ -57,7 +56,6 @@
         self.lineThickness = 2;
         self.lineRadius = 0;
         self.animateToStartPosition = YES;
-        self.tintColor = [UIColor whiteColor];
         self.tapScaling = NO;
         
         [self commonSetup];
@@ -71,21 +69,21 @@
     
     [self.layer addSublayer:_mainLayer];
     
-    _firstSegment = [[VBFDoubleSegment alloc]initWithLength:self.frame.size.width
+    _firstSegment = [[VBFDoubleSegment alloc]initWithLength:self.initialFrame.size.width
                                                   thickness:self.lineThickness
                                                      radius:self.lineRadius
                                                       color:self.tintColor
                                                initialState:doubleSegmentDefaultState];
     [self.mainLayer addSublayer:_firstSegment];
     
-    _secondSegment = [[VBFDoubleSegment alloc]initWithLength:self.frame.size.width
+    _secondSegment = [[VBFDoubleSegment alloc]initWithLength:self.initialFrame.size.width
                                                    thickness:self.lineThickness
                                                       radius:self.lineRadius
                                                        color:self.tintColor
                                                 initialState:doubleSegmentDefaultState];
     [self.mainLayer addSublayer:_secondSegment];
     
-    _thirdSegment = [[VBFDoubleSegment alloc]initWithLength:self.frame.size.width
+    _thirdSegment = [[VBFDoubleSegment alloc]initWithLength:self.initialFrame.size.width
                                                   thickness:self.lineThickness
                                                      radius:self.lineRadius
                                                       color:self.tintColor
@@ -107,7 +105,7 @@
     self.bckgLayer.cornerRadius = self.bckgLayer.bounds.size.width/2;
     self.bckgLayer.backgroundColor = self.roundBackgroundColor.CGColor;
 
-    [self.layer insertSublayer:self.bckgLayer below:_firstSegment];
+    [self.mainLayer insertSublayer:self.bckgLayer below:_firstSegment];
 }
 
 - (void)setRoundBackgroundColor:(UIColor *)roundBackgroundColor {
@@ -316,7 +314,7 @@
         case buttonPausedType:
             [self.firstSegment moveToState:doubleSegmentDefaultState animated:self.animateToStartPosition];
             [self.secondSegment moveToState:doubleSegmentDefaultState animated:self.animateToStartPosition];
-            CGFloat horizontalAmount = CGRectGetHeight(self.frame)/5;
+            CGFloat horizontalAmount = CGRectGetHeight(self.initialFrame)/5;
             firstOriginPoint.x -= horizontalAmount;
             secondOriginPoint.x += horizontalAmount;
             break;
