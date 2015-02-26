@@ -18,6 +18,8 @@
 @property (nonatomic, strong) VBFDoubleSegment *thirdSegment; //Only used for menu button
 @property (nonatomic, strong) CALayer *bckgLayer;
 @property (nonatomic) BOOL animateToStartPosition;
+@property (nonatomic) CGFloat padding;
+
 @end
 
 @implementation VBFPopFlatButton
@@ -29,6 +31,19 @@
 }
 
 - (instancetype) initWithFrame:(CGRect)frame buttonType:(FlatButtonType)initType buttonStyle:(FlatButtonStyle)bStyle animateToInitialState:(BOOL)animateToInitialState{
+    return [self initWithFrame:frame buttonType:initType buttonStyle:bStyle animateToInitialState:animateToInitialState padding:0];
+}
+
+- (id)initWithCoder:(NSCoder *)aDecoder {
+    return [self initWithFrame:CGRectZero buttonType:buttonDefaultType buttonStyle:buttonPlainStyle animateToInitialState:YES padding:0];
+}
+
+- (instancetype)initWithFrame:(CGRect)frame
+                   buttonType:(FlatButtonType)initType
+                  buttonStyle:(FlatButtonStyle)bStyle
+        animateToInitialState:(BOOL)animateToInitialState
+                      padding:(CGFloat)padding
+{
     self = [super initWithFrame:frame];
     if (self) {
         self.currentButtonType = initType;
@@ -37,41 +52,30 @@
         self.lineRadius = 0;
         self.animateToStartPosition = animateToInitialState;
         self.tintColor = [UIColor whiteColor];
-        [self commonSetup];
-    }
-    return self;
-}
-
-- (id)initWithCoder:(NSCoder *)aDecoder {
-    self = [super initWithCoder:aDecoder];
-    if (self) {
-        self.currentButtonType = buttonDefaultType;
-        self.currentButtonStyle = buttonPlainStyle;
-        self.lineThickness = 2;
-        self.lineRadius = 0;
-        self.animateToStartPosition = YES;
-        self.tintColor = [UIColor whiteColor];
+        self.padding = padding;
         [self commonSetup];
     }
     return self;
 }
 
 - (void) commonSetup {
-    _firstSegment = [[VBFDoubleSegment alloc]initWithLength:self.frame.size.width
+    CGFloat segmentWidth = self.bounds.size.width - 2*self.padding;
+    
+    _firstSegment = [[VBFDoubleSegment alloc]initWithLength:segmentWidth
                                                   thickness:self.lineThickness
                                                      radius:self.lineRadius
                                                       color:self.tintColor
                                                initialState:doubleSegmentDefaultState];
     [self.layer addSublayer:_firstSegment];
     
-    _secondSegment = [[VBFDoubleSegment alloc]initWithLength:self.frame.size.width
+    _secondSegment = [[VBFDoubleSegment alloc]initWithLength:segmentWidth
                                                    thickness:self.lineThickness
                                                       radius:self.lineRadius
                                                        color:self.tintColor
                                                 initialState:doubleSegmentDefaultState];
     [self.layer addSublayer:_secondSegment];
     
-    _thirdSegment = [[VBFDoubleSegment alloc]initWithLength:self.frame.size.width
+    _thirdSegment = [[VBFDoubleSegment alloc]initWithLength:segmentWidth
                                                   thickness:self.lineThickness
                                                      radius:self.lineRadius
                                                       color:self.tintColor
@@ -192,8 +196,11 @@
     self.firstSegment.opacity = 1.0f;
     self.secondSegment.opacity = 1.0f;
     self.thirdSegment.opacity = 0.0f;
-    CGPoint firstOriginPoint = CGPointMake(CGRectGetWidth(self.frame)/2,
-                                           CGRectGetHeight(self.frame)/2);
+    
+    CGRect drawRect = CGRectInset(self.bounds, self.padding, self.padding);
+    
+    CGPoint firstOriginPoint = CGPointMake(CGRectGetWidth(drawRect)/2 + self.padding,
+                                           CGRectGetHeight(drawRect)/2 + self.padding);
     CGPoint secondOriginPoint = firstOriginPoint;
     CGPoint thirdOriginPoint = firstOriginPoint;
     
@@ -207,7 +214,7 @@
             [self.secondSegment moveToState:doubleSegmentLessThanState animated:self.animateToStartPosition];
             self.secondSegment.opacity = 0.0;
             
-            CGFloat hAmount = CGRectGetWidth(self.frame)/5;
+            CGFloat hAmount = CGRectGetWidth(drawRect)/5;
             firstOriginPoint.x -= hAmount;
             secondOriginPoint.x -= hAmount;
             break;
@@ -224,7 +231,7 @@
             [self.secondSegment moveToState:doubleSegmentMoreThanState animated:self.animateToStartPosition];
             self.secondSegment.opacity = 0.0;
             
-            CGFloat horAmount = CGRectGetWidth(self.frame)/5;
+            CGFloat horAmount = CGRectGetWidth(drawRect)/5;
             firstOriginPoint.x += horAmount;
             secondOriginPoint.x += horAmount;
             break;
@@ -235,7 +242,7 @@
             [self.thirdSegment moveToState:doubleSegmentMinusState animated:self.animateToStartPosition];
             
             
-            CGFloat verticalAmount = CGRectGetHeight(self.frame)/3;
+            CGFloat verticalAmount = CGRectGetHeight(drawRect)/3;
             thirdOriginPoint.y -= verticalAmount;
             secondOriginPoint.y += verticalAmount;
             break;
@@ -249,14 +256,14 @@
             [self.secondSegment moveToState:doubleSegmentDownArrow animated:self.animateToStartPosition];
             [self.thirdSegment moveToState:doubleSegmentMinusState animated:self.animateToStartPosition];
             
-            secondOriginPoint.y += self.bounds.size.width/2;
-            thirdOriginPoint.y += self.bounds.size.width/2;
+            secondOriginPoint.y += drawRect.size.width/2;
+            thirdOriginPoint.y += drawRect.size.width/2;
             break;
         case buttonShareType:
             [self.firstSegment moveToState:doubleSegmentDefaultState animated:self.animateToStartPosition];
             [self.secondSegment moveToState:doubleSegmentUpArrow animated:self.animateToStartPosition];
             
-            secondOriginPoint.y -= self.bounds.size.width/2;
+            secondOriginPoint.y -= drawRect.size.width/2;
             break;
         case buttonDownBasicType:
             [self.firstSegment moveToState:doubleSegmentDownArrow animated:self.animateToStartPosition];
@@ -268,7 +275,7 @@
         case buttonDownArrowType:
             [self.firstSegment moveToState:doubleSegmentDefaultState animated:self.animateToStartPosition];
             [self.secondSegment moveToState:doubleSegmentDownArrow animated:self.animateToStartPosition];
-            secondOriginPoint.y += self.bounds.size.width/2;
+            secondOriginPoint.y += drawRect.size.width/2;
             break;
         case buttonUpBasicType:
             [self.firstSegment moveToState:doubleSegmentUpArrow animated:self.animateToStartPosition];
@@ -280,7 +287,7 @@
         case buttonPausedType:
             [self.firstSegment moveToState:doubleSegmentDefaultState animated:self.animateToStartPosition];
             [self.secondSegment moveToState:doubleSegmentDefaultState animated:self.animateToStartPosition];
-            CGFloat horizontalAmount = CGRectGetHeight(self.frame)/5;
+            CGFloat horizontalAmount = CGRectGetHeight(drawRect)/5;
             firstOriginPoint.x -= horizontalAmount;
             secondOriginPoint.x += horizontalAmount;
             break;
@@ -289,71 +296,71 @@
             [self.firstSegment moveToState:doubleSegmentSlashState60 animated:self.animateToStartPosition];
             [self.secondSegment moveToState:doubleSegmentBackSlashState60 animated:self.animateToStartPosition];
             [self.thirdSegment moveToState:doubleSegmentDefaultState animated:self.animateToStartPosition];
-            firstOriginPoint.y -= self.bounds.size.width * 0.24;
-            secondOriginPoint.y += self.bounds.size.width * 0.24;
-            firstOriginPoint.x += self.bounds.size.width/8;
-            secondOriginPoint.x += self.bounds.size.width/8;
-            thirdOriginPoint.x -= self.bounds.size.width * 0.30;
+            firstOriginPoint.y -= drawRect.size.width * 0.24;
+            secondOriginPoint.y += drawRect.size.width * 0.24;
+            firstOriginPoint.x += drawRect.size.width/8;
+            secondOriginPoint.x += drawRect.size.width/8;
+            thirdOriginPoint.x -= drawRect.size.width * 0.30;
             break;
         case buttonLeftTriangleType:
             self.thirdSegment.opacity = 1.0;
             [self.firstSegment moveToState:doubleSegmentSlashState60 animated:self.animateToStartPosition];
             [self.secondSegment moveToState:doubleSegmentBackSlashState60 animated:self.animateToStartPosition];
             [self.thirdSegment moveToState:doubleSegmentDefaultState animated:self.animateToStartPosition];
-            firstOriginPoint.y += self.bounds.size.width * 0.24;
-            secondOriginPoint.y -= self.bounds.size.width * 0.24;
-            firstOriginPoint.x -= self.bounds.size.width/8;
-            secondOriginPoint.x -= self.bounds.size.width/8;
-            thirdOriginPoint.x += self.bounds.size.width * 0.30;
+            firstOriginPoint.y += drawRect.size.width * 0.24;
+            secondOriginPoint.y -= drawRect.size.width * 0.24;
+            firstOriginPoint.x -= drawRect.size.width/8;
+            secondOriginPoint.x -= drawRect.size.width/8;
+            thirdOriginPoint.x += drawRect.size.width * 0.30;
             break;
         case buttonUpTriangleType:
             self.thirdSegment.opacity = 1.0;
             [self.firstSegment moveToState:doubleSegmentSlashState30 animated:self.animateToStartPosition];
             [self.secondSegment moveToState:doubleSegmentBackSlashState30 animated:self.animateToStartPosition];
             [self.thirdSegment moveToState:doubleSegmentMinusState animated:self.animateToStartPosition];
-            firstOriginPoint.x += self.bounds.size.width * 0.24;
-            secondOriginPoint.x -= self.bounds.size.width * 0.24;
-            firstOriginPoint.y -= self.bounds.size.width/8;
-            secondOriginPoint.y -= self.bounds.size.width/8;
-            thirdOriginPoint.y += self.bounds.size.width * 0.30;
+            firstOriginPoint.x += drawRect.size.width * 0.24;
+            secondOriginPoint.x -= drawRect.size.width * 0.24;
+            firstOriginPoint.y -= drawRect.size.width/8;
+            secondOriginPoint.y -= drawRect.size.width/8;
+            thirdOriginPoint.y += drawRect.size.width * 0.30;
             break;
         case buttonDownTriangleType:
             self.thirdSegment.opacity = 1.0;
             [self.firstSegment moveToState:doubleSegmentSlashState30 animated:self.animateToStartPosition];
             [self.secondSegment moveToState:doubleSegmentBackSlashState30 animated:self.animateToStartPosition];
             [self.thirdSegment moveToState:doubleSegmentMinusState animated:self.animateToStartPosition];
-            firstOriginPoint.x -= self.bounds.size.width * 0.24;
-            secondOriginPoint.x += self.bounds.size.width * 0.24;
-            firstOriginPoint.y += self.bounds.size.width/8;
-            secondOriginPoint.y += self.bounds.size.width/8;
-            thirdOriginPoint.y -= self.bounds.size.width * 0.30;
+            firstOriginPoint.x -= drawRect.size.width * 0.24;
+            secondOriginPoint.x += drawRect.size.width * 0.24;
+            firstOriginPoint.y += drawRect.size.width/8;
+            secondOriginPoint.y += drawRect.size.width/8;
+            thirdOriginPoint.y -= drawRect.size.width * 0.30;
             break;
         case buttonOkType:
             self.thirdSegment.opacity = 0.0;
             [self.firstSegment moveToState:doubleSegmentBackSlashState45 animated:self.animateToStartPosition];
             [self.secondSegment moveToState:doubleSegmentDownArrow animated:self.animateToStartPosition];
-            firstOriginPoint.y 	+= self.bounds.size.width/6;
-            secondOriginPoint.y += self.bounds.size.width/2;
-            firstOriginPoint.x  += self.bounds.size.width * 0.19;
-            secondOriginPoint.x -= self.bounds.size.width * 0.14;
+            firstOriginPoint.y 	+= drawRect.size.width/6;
+            secondOriginPoint.y += drawRect.size.width/2;
+            firstOriginPoint.x  += drawRect.size.width * 0.19;
+            secondOriginPoint.x -= drawRect.size.width * 0.14;
             break;
         case buttonRewindType:
             [self.firstSegment moveToState:doubleSegmentLessThanState animated:self.animateToStartPosition];
             [self.secondSegment moveToState:doubleSegmentLessThanState animated:self.animateToStartPosition];
             
-            firstOriginPoint.x -= self.bounds.size.width * 0.4;
+            firstOriginPoint.x -= drawRect.size.width * 0.4;
             break;
         case buttonFastForwardType:
             [self.firstSegment moveToState:doubleSegmentMoreThanState animated:self.animateToStartPosition];
             [self.secondSegment moveToState:doubleSegmentMoreThanState animated:self.animateToStartPosition];
             
-            firstOriginPoint.x += self.bounds.size.width * 0.4;
+            firstOriginPoint.x += drawRect.size.width * 0.4;
             break;
         case buttonSquareType:
             [self.firstSegment moveToState:doubleSegmentFourthQuadrantState animated:self.animateToStartPosition];
             [self.secondSegment moveToState:doubleSegmentSecondQuadrantState animated:self.animateToStartPosition];
             
-            CGFloat offsetAmount = self.bounds.size.height/4 - self.lineThickness/4;
+            CGFloat offsetAmount = drawRect.size.height/4 - self.lineThickness/4;
             firstOriginPoint.y -= offsetAmount;
             secondOriginPoint.y += offsetAmount;
             firstOriginPoint.x -= offsetAmount;

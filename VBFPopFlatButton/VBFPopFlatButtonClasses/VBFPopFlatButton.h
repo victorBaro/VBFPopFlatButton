@@ -64,6 +64,13 @@ typedef NS_ENUM(NSInteger, FlatButtonStyle) {
 ////////////////////////////////
 
 
+- (instancetype)initWithFrame:(CGRect)frame
+                   buttonType:(FlatButtonType)initType
+                  buttonStyle:(FlatButtonStyle)bStyle
+        animateToInitialState:(BOOL)animateToInitialState
+                      padding:(CGFloat)padding NS_DESIGNATED_INITIALIZER;
+
+
 - (void)setTintColor:(UIColor *)tintColor forState:(UIControlState)state;
 - (UIColor *)tintColorForState:(UIControlState)state;
 - (void)animateToType:(FlatButtonType)finalType;
