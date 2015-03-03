@@ -19,6 +19,7 @@
 @property (nonatomic, strong) CALayer *bckgLayer;
 @property (nonatomic) BOOL animateToStartPosition;
 @property (nonatomic) CGFloat padding;
+@property (nonatomic) CGSize buttonSize;
 
 @end
 
@@ -53,10 +54,18 @@
         self.animateToStartPosition = animateToInitialState;
         self.tintColor = [UIColor whiteColor];
         self.padding = padding;
+        self.buttonSize = frame.size;
         [self commonSetup];
     }
     return self;
 }
+
+
+- (CGSize)intrinsicContentSize
+{
+    return self.buttonSize;
+}
+
 
 - (void) commonSetup {
     CGFloat segmentWidth = self.bounds.size.width - 2*self.padding;
@@ -89,6 +98,7 @@
     
     [self animateToType:self.currentButtonType];
 }
+
 
 - (void)setupBackgroundLayer {
     self.bckgLayer = [CALayer layer];
@@ -199,8 +209,8 @@
     
     CGRect drawRect = CGRectInset(self.bounds, self.padding, self.padding);
     
-    CGPoint firstOriginPoint = CGPointMake(CGRectGetWidth(drawRect)/2 + self.padding,
-                                           CGRectGetHeight(drawRect)/2 + self.padding);
+    CGPoint firstOriginPoint = CGPointMake(CGRectGetWidth(self.bounds)/2,
+                                           CGRectGetHeight(self.bounds)/2);
     CGPoint secondOriginPoint = firstOriginPoint;
     CGPoint thirdOriginPoint = firstOriginPoint;
     
