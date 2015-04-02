@@ -31,11 +31,11 @@
 - (instancetype) initWithFrame:(CGRect)frame buttonType:(FlatButtonType)initType buttonStyle:(FlatButtonStyle)bStyle animateToInitialState:(BOOL)animateToInitialState{
     self = [super initWithFrame:frame];
     if (self) {
-        self.currentButtonType = initType;
-        self.currentButtonStyle = bStyle;
-        self.lineThickness = 2;
-        self.lineRadius = 0;
-        self.animateToStartPosition = animateToInitialState;
+        _currentButtonType = initType;
+        _currentButtonStyle = bStyle;
+        _lineThickness = 2;
+        _lineRadius = 0;
+        _animateToStartPosition = animateToInitialState;
         self.tintColor = [UIColor whiteColor];
         [self commonSetup];
     }
