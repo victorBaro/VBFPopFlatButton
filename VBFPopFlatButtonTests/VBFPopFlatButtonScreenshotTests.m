@@ -149,4 +149,31 @@ describe(@"Back Button Type", ^{
         expect(view).to.haveValidSnapshotNamed(@"backButtonRound");
     });
 });
+
+describe(@"Forward Button Type", ^{
+    
+    __block UIView *view;
+    
+    beforeEach(^{
+        view = [[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, 320.0, 480.0)];
+        view.backgroundColor = [UIColor blueColor];
+    });
+    
+    it(@"plain button matches plain button", ^{
+        VBFPopFlatButton *button = [[VBFPopFlatButton alloc] initWithFrame:CGRectMake(50.0, 50.0, 40.0f, 40.0f) buttonType:buttonForwardType buttonStyle:buttonPlainStyle animateToInitialState:NO];
+        [view addSubview:button];
+//        expect(view).to.recordSnapshotNamed(@"forwardButtonPlain");
+        expect(view).to.haveValidSnapshotNamed(@"forwardButtonPlain");
+    });
+    
+    it(@"round default button matches round default button", ^{
+        VBFPopFlatButton *button = [[VBFPopFlatButton alloc] initWithFrame:CGRectMake(50.0, 50.0, 40.0f, 40.0f) buttonType:buttonForwardType buttonStyle:buttonRoundedStyle animateToInitialState:NO];
+        button.roundBackgroundColor = [UIColor whiteColor];
+        button.tintColor = [UIColor blueColor];
+        [view addSubview:button];
+//        expect(view).to.recordSnapshotNamed(@"forwardButtonRound");
+        expect(view).to.haveValidSnapshotNamed(@"forwardButtonRound");
+    });
+});
+
 SpecEnd
