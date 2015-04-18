@@ -1,6 +1,8 @@
 VBFPopFlatButton
 ================
 
+[![Build Status](https://travis-ci.org/victorBaro/VBFPopFlatButton.png)](https://travis-ci.org/victorBaro/VBFPopFlatButton)
+
 Flat button with 21 different states and 2 types animated using [pop](https://github.com/facebook/pop).
 
 These are some examples of both types in different states:
