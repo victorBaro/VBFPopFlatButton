@@ -358,4 +358,30 @@ describe(@"Paused Button Type", ^{
     });
 });
 
+describe(@"Right Triangle Button Type", ^{
+    
+    __block UIView *view;
+    
+    beforeEach(^{
+        view = [[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, 320.0, 480.0)];
+        view.backgroundColor = [UIColor blueColor];
+    });
+    
+    it(@"plain button matches plain button", ^{
+        VBFPopFlatButton *button = [[VBFPopFlatButton alloc] initWithFrame:CGRectMake(50.0, 50.0, 40.0f, 40.0f) buttonType:buttonRightTriangleType buttonStyle:buttonPlainStyle animateToInitialState:NO];
+        [view addSubview:button];
+//        expect(view).to.recordSnapshotNamed(@"rightTriangleButtonPlain");
+        expect(view).to.haveValidSnapshotNamed(@"rightTriangleButtonPlain");
+    });
+    
+    it(@"round default button matches round default button", ^{
+        VBFPopFlatButton *button = [[VBFPopFlatButton alloc] initWithFrame:CGRectMake(50.0, 50.0, 40.0f, 40.0f) buttonType:buttonRightTriangleType buttonStyle:buttonRoundedStyle animateToInitialState:NO];
+        button.roundBackgroundColor = [UIColor whiteColor];
+        button.tintColor = [UIColor blueColor];
+        [view addSubview:button];
+//        expect(view).to.recordSnapshotNamed(@"rightTriangleButtonRound");
+        expect(view).to.haveValidSnapshotNamed(@"rightTriangleButtonRound");
+    });
+});
+
 SpecEnd
