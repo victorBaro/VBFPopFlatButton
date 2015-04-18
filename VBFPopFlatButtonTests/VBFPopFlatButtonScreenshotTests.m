@@ -488,4 +488,30 @@ describe(@"Ok Button Type", ^{
     });
 });
 
+describe(@"Rewind Button Type", ^{
+    
+    __block UIView *view;
+    
+    beforeEach(^{
+        view = [[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, 320.0, 480.0)];
+        view.backgroundColor = [UIColor blueColor];
+    });
+    
+    it(@"plain button matches plain button", ^{
+        VBFPopFlatButton *button = [[VBFPopFlatButton alloc] initWithFrame:CGRectMake(50.0, 50.0, 40.0f, 40.0f) buttonType:buttonRewindType buttonStyle:buttonPlainStyle animateToInitialState:NO];
+        [view addSubview:button];
+//        expect(view).to.recordSnapshotNamed(@"rewindButtonPlain");
+        expect(view).to.haveValidSnapshotNamed(@"rewindButtonPlain");
+    });
+    
+    it(@"round default button matches round default button", ^{
+        VBFPopFlatButton *button = [[VBFPopFlatButton alloc] initWithFrame:CGRectMake(50.0, 50.0, 40.0f, 40.0f) buttonType:buttonRewindType buttonStyle:buttonRoundedStyle animateToInitialState:NO];
+        button.roundBackgroundColor = [UIColor whiteColor];
+        button.tintColor = [UIColor blueColor];
+        [view addSubview:button];
+//        expect(view).to.recordSnapshotNamed(@"rewindButtonRound");
+        expect(view).to.haveValidSnapshotNamed(@"rewindButtonRound");
+    });
+});
+
 SpecEnd
