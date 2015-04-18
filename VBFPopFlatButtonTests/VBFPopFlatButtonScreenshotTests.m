@@ -176,4 +176,30 @@ describe(@"Forward Button Type", ^{
     });
 });
 
+describe(@"Menu Button Type", ^{
+    
+    __block UIView *view;
+    
+    beforeEach(^{
+        view = [[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, 320.0, 480.0)];
+        view.backgroundColor = [UIColor blueColor];
+    });
+    
+    it(@"plain button matches plain button", ^{
+        VBFPopFlatButton *button = [[VBFPopFlatButton alloc] initWithFrame:CGRectMake(50.0, 50.0, 40.0f, 40.0f) buttonType:buttonMenuType buttonStyle:buttonPlainStyle animateToInitialState:NO];
+        [view addSubview:button];
+//        expect(view).to.recordSnapshotNamed(@"menuButtonPlain");
+        expect(view).to.haveValidSnapshotNamed(@"menuButtonPlain");
+    });
+    
+    it(@"round default button matches round default button", ^{
+        VBFPopFlatButton *button = [[VBFPopFlatButton alloc] initWithFrame:CGRectMake(50.0, 50.0, 40.0f, 40.0f) buttonType:buttonMenuType buttonStyle:buttonRoundedStyle animateToInitialState:NO];
+        button.roundBackgroundColor = [UIColor whiteColor];
+        button.tintColor = [UIColor blueColor];
+        [view addSubview:button];
+//        expect(view).to.recordSnapshotNamed(@"menuButtonRound");
+        expect(view).to.haveValidSnapshotNamed(@"menuButtonRound");
+    });
+});
+
 SpecEnd
