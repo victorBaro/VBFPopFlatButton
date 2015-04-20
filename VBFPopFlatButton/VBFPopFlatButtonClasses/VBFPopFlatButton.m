@@ -16,6 +16,7 @@
 @property (nonatomic, strong) VBFDoubleSegment *firstSegment;
 @property (nonatomic, strong) VBFDoubleSegment *secondSegment;
 @property (nonatomic, strong) VBFDoubleSegment *thirdSegment; //Only used for menu button
+@property (nonatomic, strong) VBFDoubleSegment *fourthSegment;
 @property (nonatomic, strong) CALayer *bckgLayer;
 @property (nonatomic) BOOL animateToStartPosition;
 @end
@@ -79,6 +80,10 @@
     _thirdSegment.opacity = 0.0;
     [self.layer addSublayer:_thirdSegment];
     
+    _fourthSegment = [[VBFDoubleSegment alloc]initWithLength:self.frame.size.width/2 thickness:self.frame.size.width/2 radius:50 color:[UIColor colorWithRed:0.971622 green:0.0655261 blue:0.316449 alpha:1] initialState:doubleSegmentMinusState];
+    _fourthSegment.opacity = 0.0;
+    [self.layer addSublayer:_fourthSegment];
+    
     if (self.currentButtonStyle == buttonRoundedStyle) {
         [self setupBackgroundLayer];
     }
@@ -92,7 +97,7 @@
     self.bckgLayer.frame = CGRectInset(self.bounds, -amount, -amount);
     self.bckgLayer.cornerRadius = self.bckgLayer.bounds.size.width/2;
     self.bckgLayer.backgroundColor = self.roundBackgroundColor.CGColor;
-
+    
     [self.layer insertSublayer:self.bckgLayer below:_firstSegment];
 }
 
@@ -192,10 +197,12 @@
     self.firstSegment.opacity = 1.0f;
     self.secondSegment.opacity = 1.0f;
     self.thirdSegment.opacity = 0.0f;
+    self.fourthSegment.opacity = 0.0f;
     CGPoint firstOriginPoint = CGPointMake(CGRectGetWidth(self.frame)/2,
                                            CGRectGetHeight(self.frame)/2);
     CGPoint secondOriginPoint = firstOriginPoint;
     CGPoint thirdOriginPoint = firstOriginPoint;
+    CGPoint fourthOriginPoint = firstOriginPoint;
     
     switch (finalType) {
         case buttonAddType:
@@ -262,7 +269,7 @@
             [self.firstSegment moveToState:doubleSegmentDownArrow animated:self.animateToStartPosition];
             [self.secondSegment moveToState:doubleSegmentDownArrow animated:self.animateToStartPosition];
             self.secondSegment.opacity = 0.0;
-
+            
             firstOriginPoint.y += CGRectGetHeight(self.firstSegment.frame)/5;
             break;
         case buttonDownArrowType:
@@ -274,7 +281,7 @@
             [self.firstSegment moveToState:doubleSegmentUpArrow animated:self.animateToStartPosition];
             [self.secondSegment moveToState:doubleSegmentUpArrow animated:self.animateToStartPosition];
             self.secondSegment.opacity = 0.0;
-
+            
             firstOriginPoint.y -= CGRectGetHeight(self.firstSegment.frame)/5;
             break;
         case buttonPausedType:
@@ -359,8 +366,21 @@
             firstOriginPoint.x -= offsetAmount;
             secondOriginPoint.x += offsetAmount;
             break;
-
-
+        case buttonMenuChatType:
+            self.thirdSegment.opacity = 1.0;
+            [self.firstSegment moveToState:doubleSegmentMinusState animated:self.animateToStartPosition];
+            [self.secondSegment moveToState:doubleSegmentMinusState animated:self.animateToStartPosition];
+            [self.thirdSegment moveToState:doubleSegmentMinusState animated:self.animateToStartPosition];
+            [self.fourthSegment moveToState:doubleSegmentMinusState animated:self.animateToStartPosition];
+            
+            CGFloat verticalChatAmount = CGRectGetHeight(self.frame)/3;
+            fourthOriginPoint.y = self.frame.size.width/4;
+            fourthOriginPoint.x = self.frame.size.width/4*3;
+            thirdOriginPoint.y -= verticalChatAmount;
+            secondOriginPoint.y += verticalChatAmount;
+            self.fourthSegment.opacity = 1.0;
+            break;
+            
         default:
             break;
     }
@@ -368,7 +388,7 @@
     [self.firstSegment movePositionToPoint:firstOriginPoint animated:self.animateToStartPosition];
     [self.secondSegment movePositionToPoint:secondOriginPoint animated:self.animateToStartPosition];
     [self.thirdSegment movePositionToPoint:thirdOriginPoint animated:self.animateToStartPosition];
-    
+    [self.fourthSegment movePositionToPoint:fourthOriginPoint animated:self.animateToStartPosition];
     if (!self.animateToStartPosition) {
         //Setting that line makes sure the above code is only NOT animated first time
         self.animateToStartPosition = YES;
