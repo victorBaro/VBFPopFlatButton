@@ -101,3 +101,7 @@ This are the 20 types avaiable for the button:
 More types are welcomed :D
 
 For more info, visit my blog [victorbaro.com](http://victorbaro.com/)
+
+
+## Apps using this control
+I would love to know which apps in the App Store are using this control. Please, feel free to add your app :)
