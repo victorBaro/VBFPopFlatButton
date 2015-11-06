@@ -23,18 +23,18 @@
 }
 
 - (instancetype)initWithLength:(CGFloat)length
-           thickness:(CGFloat)lineThickness
-              radius:(CGFloat)lineRadius
-               color:(UIColor *)lineColor
-        initialState:(DoubleSegmentState)initState {
+                     thickness:(CGFloat)lineThickness
+                        radius:(CGFloat)lineRadius
+                         color:(UIColor *)lineColor
+                  initialState:(DoubleSegmentState)initState {
     self = [super init];
     if (self) {
-        self.totalLength = length;
-        self.lineThickness = lineThickness;
-        self.lineColor = lineColor;
-        self.lineRadius = lineRadius;
+        _totalLength = length;
+        _lineThickness = lineThickness;
+        _lineColor = lineColor;
+        _lineRadius = lineRadius;
         self.backgroundColor = [UIColor clearColor].CGColor;
-        
+
         self.frame = CGRectMake(0,
                                 0,
                                 length,
@@ -46,41 +46,37 @@
 }
 
 - (void) setupLines {
-    self.topAnchorPoint = ((self.totalLength/2) / ((self.totalLength + self.lineThickness) / 2));
-    self.topLine = [CAShapeLayer layer];
-    self.topLine.bounds = CGRectMake(0,
-                                     0,
-                                     self.lineThickness,
-                                     (self.totalLength + self.lineThickness)/2);
-    self.topLine.path = [UIBezierPath bezierPathWithRoundedRect:self.topLine.bounds
-                                                   cornerRadius:self.lineRadius].CGPath;
-    self.topLine.fillColor = self.lineColor.CGColor;
-    self.topLine.anchorPoint = CGPointMake(0.5, self.topAnchorPoint);
-    self.topLine.position = CGPointMake(self.totalLength/2,
-                                        self.totalLength/2);
-    [self addSublayer:self.topLine];
-    
-    self.bottomLine = [CAShapeLayer layer];
-    self.bottomLine.bounds = CGRectMake(0,
-                                        0,
-                                        self.lineThickness,
-                                        (self.totalLength + self.lineThickness)/2);
-    self.bottomLine.path = [UIBezierPath bezierPathWithRoundedRect:self.bottomLine.bounds
-                                                      cornerRadius:self.lineRadius].CGPath;
-    self.bottomLine.fillColor = self.lineColor.CGColor;
-    self.bottomLine.anchorPoint = CGPointMake(0.5, 1-self.topAnchorPoint);
-    self.bottomLine.position = CGPointMake(self.totalLength/2,
-                                           self.totalLength/2);
-    [self addSublayer:self.bottomLine];
+    _topAnchorPoint = ((_totalLength/2) / ((_totalLength + _lineThickness) / 2));
+    _topLine = [CAShapeLayer layer];
+    _topLine.bounds = CGRectMake(0,
+                                 0,
+                                 _lineThickness,
+                                 (_totalLength + _lineThickness)/2);
+    _topLine.path = [UIBezierPath bezierPathWithRoundedRect:_topLine.bounds
+                                               cornerRadius:_lineRadius].CGPath;
+    _topLine.fillColor = _lineColor.CGColor;
+    _topLine.anchorPoint = CGPointMake(0.5, _topAnchorPoint);
+    _topLine.position = CGPointMake(_totalLength/2,
+                                    _totalLength/2);
+    [self addSublayer:_topLine];
+
+    _bottomLine = [CAShapeLayer layer];
+    _bottomLine.bounds = CGRectMake(0,
+                                    0,
+                                    _lineThickness,
+                                    (_totalLength + _lineThickness)/2);
+    _bottomLine.path = [UIBezierPath bezierPathWithRoundedRect:_bottomLine.bounds
+                                                  cornerRadius:_lineRadius].CGPath;
+    _bottomLine.fillColor = _lineColor.CGColor;
+    _bottomLine.anchorPoint = CGPointMake(0.5, 1-_topAnchorPoint);
+    _bottomLine.position = CGPointMake(_totalLength/2,
+                                       _totalLength/2);
+    [self addSublayer:_bottomLine];
 }
 
 - (void)setLineColor:(UIColor *)lineColor {
-    if (_topLine) {
-        _topLine.fillColor = lineColor.CGColor;
-    }
-    if (_bottomLine) {
-        _bottomLine.fillColor = lineColor.CGColor;
-    }
+    _topLine.fillColor = lineColor.CGColor;
+    _bottomLine.fillColor = lineColor.CGColor;
     _lineColor = lineColor;
 }
 
@@ -109,14 +105,11 @@
 
 - (void)setLineRadius:(CGFloat)lineRadius
 {
-    if (_bottomLine) {
-        _bottomLine.path = [UIBezierPath bezierPathWithRoundedRect:self.bottomLine.bounds
-                                                      cornerRadius:lineRadius].CGPath;
-    }
-    if (_topLine) {
-        _topLine.path = [UIBezierPath bezierPathWithRoundedRect:self.topLine.bounds
-                                                   cornerRadius:lineRadius].CGPath;
-    }
+    _bottomLine.path = [UIBezierPath bezierPathWithRoundedRect:self.bottomLine.bounds
+                                                  cornerRadius:lineRadius].CGPath;
+
+    _topLine.path = [UIBezierPath bezierPathWithRoundedRect:self.topLine.bounds
+                                               cornerRadius:lineRadius].CGPath;
     _lineRadius = lineRadius;
 }
 
