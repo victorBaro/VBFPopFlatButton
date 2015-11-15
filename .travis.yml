@@ -1,2 +1,2 @@
 language: objective-c
-script: xcodebuild build test
+script: xcodebuild tests
