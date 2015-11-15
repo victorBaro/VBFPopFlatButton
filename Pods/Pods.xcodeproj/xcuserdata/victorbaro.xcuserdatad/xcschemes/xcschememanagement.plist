@@ -4,27 +4,12 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>Expecta+Snapshots.xcscheme</key>
+		<key>Pods-UIColor+FlatColors.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Expecta.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>FBSnapshotTestCase.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>OCMock.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>Pods-VBFPopFlatButtonTests.xcscheme</key>
+		<key>Pods-pop.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -34,65 +19,20 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Specta.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>UIColor+FlatColors.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>pop.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>05257CC76400D71826E603561A0F73E6</key>
+		<key>4FC5C201BF204F67AE4F27E1</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>1E8469E8AE7E8DB55F60EB76FDEE8268</key>
+		<key>5725F6894EDB47A1B3B8BCA3</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>49A33932C58B430A22D75CF790147251</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>6C15FA49A4E02FA8F52CFAC8390E09FA</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>7D9E32DAA93E15CFCF77A5BCD2D4BAA2</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>804210C01736817A67437F0C449BDB9A</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>B20A6002820A41B7161DEEB0269F30B7</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>D27119647CC98A454979E3575E079803</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>F97C930769DCC5F86114946A8521D6C3</key>
+		<key>6D7A54AD85624C2D9EC9E070</key>
 		<dict>
 			<key>primary</key>
 			<true/>

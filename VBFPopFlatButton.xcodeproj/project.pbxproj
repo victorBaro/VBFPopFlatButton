@@ -19,6 +19,7 @@
 		C7C49251199FC4A2004CAF5A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7C49250199FC4A2004CAF5A /* ViewController.m */; };
 		C7C49254199FC4A2004CAF5A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7C49252199FC4A2004CAF5A /* Main.storyboard */; };
 		C7C49256199FC4A2004CAF5A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C7C49255199FC4A2004CAF5A /* Images.xcassets */; };
+		C7C49262199FC4A2004CAF5A /* VBFPopFlatButtonTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C7C49261199FC4A2004CAF5A /* VBFPopFlatButtonTests.m */; };
 		CD00BAB21AE2A17B00DEA2B0 /* VBFPopFlatButtonScreenshotTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CD00BAB11AE2A17B00DEA2B0 /* VBFPopFlatButtonScreenshotTests.m */; };
 		FEF1338D55A589D54A60D8A5 /* libPods-VBFPopFlatButtonTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B16CBE0358AF440BAB2722A /* libPods-VBFPopFlatButtonTests.a */; };
 /* End PBXBuildFile section */
@@ -59,6 +60,7 @@
 		C7C49255199FC4A2004CAF5A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		C7C4925B199FC4A2004CAF5A /* VBFPopFlatButtonTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VBFPopFlatButtonTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7C49260199FC4A2004CAF5A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C7C49261199FC4A2004CAF5A /* VBFPopFlatButtonTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VBFPopFlatButtonTests.m; sourceTree = "<group>"; };
 		CD00BAB11AE2A17B00DEA2B0 /* VBFPopFlatButtonScreenshotTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VBFPopFlatButtonScreenshotTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -168,6 +170,7 @@
 		C7C4925E199FC4A2004CAF5A /* VBFPopFlatButtonTests */ = {
 			isa = PBXGroup;
 			children = (
+				C7C49261199FC4A2004CAF5A /* VBFPopFlatButtonTests.m */,
 				CD00BAB11AE2A17B00DEA2B0 /* VBFPopFlatButtonScreenshotTests.m */,
 				C7C4925F199FC4A2004CAF5A /* Supporting Files */,
 			);
@@ -194,7 +197,6 @@
 				C7C49242199FC4A2004CAF5A /* Frameworks */,
 				C7C49243199FC4A2004CAF5A /* Resources */,
 				07FBEC40D78E4D49A2D8C2E5 /* Copy Pods Resources */,
-				AD15919E99367FAC584FF5CE /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -214,7 +216,6 @@
 				C7C49258199FC4A2004CAF5A /* Frameworks */,
 				C7C49259199FC4A2004CAF5A /* Resources */,
 				5CBBDF277B9DF560036F34EC /* Copy Pods Resources */,
-				31B8149CD2C8C12B2ED229B6 /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -232,7 +233,7 @@
 		C7C4923D199FC4A2004CAF5A /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0710;
+				LastUpgradeCheck = 0600;
 				ORGANIZATIONNAME = "Victor Baro";
 				TargetAttributes = {
 					C7C49244199FC4A2004CAF5A = {
@@ -298,21 +299,6 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		31B8149CD2C8C12B2ED229B6 /* Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-VBFPopFlatButtonTests/Pods-VBFPopFlatButtonTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		36AA18E94F1E4F6E8FDDAB47 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -358,21 +344,6 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-VBFPopFlatButtonTests/Pods-VBFPopFlatButtonTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		AD15919E99367FAC584FF5CE /* Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -392,6 +363,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C7C49262199FC4A2004CAF5A /* VBFPopFlatButtonTests.m in Sources */,
 				CD00BAB21AE2A17B00DEA2B0 /* VBFPopFlatButtonScreenshotTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -438,7 +410,6 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -504,7 +475,6 @@
 				INFOPLIST_FILE = VBFPopFlatButton/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.victorbaro.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -518,7 +488,6 @@
 				INFOPLIST_FILE = VBFPopFlatButton/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.victorbaro.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -539,7 +508,6 @@
 				INFOPLIST_FILE = VBFPopFlatButtonTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.victorbaro.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/VBFPopFlatButton.app/VBFPopFlatButton";
 			};
@@ -557,7 +525,6 @@
 				INFOPLIST_FILE = VBFPopFlatButtonTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.victorbaro.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/VBFPopFlatButton.app/VBFPopFlatButton";
 			};
