@@ -1,9 +1,9 @@
 Pod::Spec.new do |s|
 
     s.name              = 'VBFPopFlatButton'
-    s.version           = '0.0.6'
+    s.version           = '0.0.7'
     s.summary           = 'Animated flat button using POP'
-    s.homepage          = 'https://github.com/iBaro/VBFPopFlatButton'
+    s.homepage          = 'https://github.com/wynch/VBFPopFlatButton'
     s.license           = {
         :type => 'MIT',
         :file => 'LICENSE'
@@ -12,7 +12,7 @@ Pod::Spec.new do |s|
         'Victor Baro' => 'dev.vbaro@gmail.com'
     }
     s.source            = {
-        :git => 'https://github.com/iBaro/VBFPopFlatButton.git',
+        :git => 'https://github.com/wynch/VBFPopFlatButton.git',
         :tag => s.version.to_s
     }
     s.source_files      = 'VBFPopFlatButton/VBFPopFlatButtonClasses/*.{m,h}'
