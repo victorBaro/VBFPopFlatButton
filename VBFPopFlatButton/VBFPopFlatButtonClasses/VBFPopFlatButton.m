@@ -8,14 +8,17 @@
 
 #import "VBFPopFlatButton.h"
 #import "VBFDoubleSegment.h"
+#import "POP.h"
 
 @interface VBFPopFlatButton () {
     NSMutableDictionary *_tintColors;
 }
 
+@property (nonatomic) CGRect initialFrame;
 @property (nonatomic, strong) VBFDoubleSegment *firstSegment;
 @property (nonatomic, strong) VBFDoubleSegment *secondSegment;
 @property (nonatomic, strong) VBFDoubleSegment *thirdSegment; //Only used for menu button
+@property (nonatomic, strong) CALayer *mainLayer;
 @property (nonatomic, strong) CALayer *bckgLayer;
 @property (nonatomic) BOOL animateToStartPosition;
 @end
@@ -31,12 +34,14 @@
 - (instancetype) initWithFrame:(CGRect)frame buttonType:(FlatButtonType)initType buttonStyle:(FlatButtonStyle)bStyle animateToInitialState:(BOOL)animateToInitialState{
     self = [super initWithFrame:frame];
     if (self) {
+        self.initialFrame = frame;
         self.currentButtonType = initType;
         self.currentButtonStyle = bStyle;
         self.lineThickness = 2;
         self.lineRadius = 0;
         self.animateToStartPosition = animateToInitialState;
-        self.tintColor = [UIColor whiteColor];
+        self.tapScaling = NO;
+        
         [self commonSetup];
     }
     return self;
@@ -45,39 +50,46 @@
 - (id)initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
     if (self) {
+        self.initialFrame = self.frame;
         self.currentButtonType = buttonDefaultType;
         self.currentButtonStyle = buttonPlainStyle;
         self.lineThickness = 2;
         self.lineRadius = 0;
         self.animateToStartPosition = YES;
-        self.tintColor = [UIColor whiteColor];
+        self.tapScaling = NO;
+        
         [self commonSetup];
     }
     return self;
 }
 
 - (void) commonSetup {
-    _firstSegment = [[VBFDoubleSegment alloc]initWithLength:self.frame.size.width
+    _mainLayer = [CALayer layer];
+    _mainLayer.frame = (CGRect) {CGPointZero, self.initialFrame.size};
+    
+    [self.layer addSublayer:_mainLayer];
+    
+    _firstSegment = [[VBFDoubleSegment alloc]initWithLength:self.initialFrame.size.width
                                                   thickness:self.lineThickness
                                                      radius:self.lineRadius
                                                       color:self.tintColor
                                                initialState:doubleSegmentDefaultState];
-    [self.layer addSublayer:_firstSegment];
+    [self.mainLayer addSublayer:_firstSegment];
     
-    _secondSegment = [[VBFDoubleSegment alloc]initWithLength:self.frame.size.width
+    _secondSegment = [[VBFDoubleSegment alloc]initWithLength:self.initialFrame.size.width
                                                    thickness:self.lineThickness
                                                       radius:self.lineRadius
                                                        color:self.tintColor
                                                 initialState:doubleSegmentDefaultState];
-    [self.layer addSublayer:_secondSegment];
+    [self.mainLayer addSublayer:_secondSegment];
     
-    _thirdSegment = [[VBFDoubleSegment alloc]initWithLength:self.frame.size.width
+    _thirdSegment = [[VBFDoubleSegment alloc]initWithLength:self.initialFrame.size.width
                                                   thickness:self.lineThickness
                                                      radius:self.lineRadius
                                                       color:self.tintColor
                                                initialState:doubleSegmentMinusState];
     _thirdSegment.opacity = 0.0;
-    [self.layer addSublayer:_thirdSegment];
+    [self.mainLayer addSublayer:_thirdSegment];
     
     if (self.currentButtonStyle == buttonRoundedStyle) {
         [self setupBackgroundLayer];
@@ -93,7 +105,7 @@
     self.bckgLayer.cornerRadius = self.bckgLayer.bounds.size.width/2;
     self.bckgLayer.backgroundColor = self.roundBackgroundColor.CGColor;
 
-    [self.layer insertSublayer:self.bckgLayer below:_firstSegment];
+    [self.mainLayer insertSublayer:self.bckgLayer below:_firstSegment];
 }
 
 - (void)setRoundBackgroundColor:(UIColor *)roundBackgroundColor {
@@ -150,6 +162,7 @@
 
 - (void)setHighlighted:(BOOL)highlighted {
     [super setHighlighted:highlighted];
+    [self tapScaleDown:highlighted];
     [self updateState];
 }
 
@@ -160,6 +173,26 @@
 
 - (void)updateState {
     self.tintColor = [self tintColorForState:self.state];
+}
+
+- (void)tapScaleDown:(BOOL)down
+{
+    if(self.tapScaling) {
+        POPSpringAnimation *scaleAnimation = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerScaleXY];
+        
+        scaleAnimation.springBounciness = 5.0f;
+        scaleAnimation.springSpeed = 10.0f;
+        
+        if(down) {
+            scaleAnimation.toValue  = [NSValue valueWithCGSize:CGSizeMake(0.8, 0.8f)];
+        }
+        else {
+            scaleAnimation.toValue  = [NSValue valueWithCGSize:CGSizeMake(1.0f, 1.0f)];
+        }
+        
+        [self.mainLayer pop_addAnimation:scaleAnimation
+                                  forKey:@"scale"];
+    }
 }
 
 - (UIColor *)tintColorForState:(UIControlState)state {
@@ -192,8 +225,9 @@
     self.firstSegment.opacity = 1.0f;
     self.secondSegment.opacity = 1.0f;
     self.thirdSegment.opacity = 0.0f;
-    CGPoint firstOriginPoint = CGPointMake(CGRectGetWidth(self.frame)/2,
-                                           CGRectGetHeight(self.frame)/2);
+    CGPoint firstOriginPoint = CGPointMake(CGRectGetWidth(self.initialFrame)/2,
+                                           CGRectGetHeight(self.initialFrame)/2);
+    
     CGPoint secondOriginPoint = firstOriginPoint;
     CGPoint thirdOriginPoint = firstOriginPoint;
     
@@ -207,7 +241,7 @@
             [self.secondSegment moveToState:doubleSegmentLessThanState animated:self.animateToStartPosition];
             self.secondSegment.opacity = 0.0;
             
-            CGFloat hAmount = CGRectGetWidth(self.frame)/5;
+            CGFloat hAmount = CGRectGetWidth(self.initialFrame)/5;
             firstOriginPoint.x -= hAmount;
             secondOriginPoint.x -= hAmount;
             break;
@@ -224,7 +258,7 @@
             [self.secondSegment moveToState:doubleSegmentMoreThanState animated:self.animateToStartPosition];
             self.secondSegment.opacity = 0.0;
             
-            CGFloat horAmount = CGRectGetWidth(self.frame)/5;
+            CGFloat horAmount = CGRectGetWidth(self.initialFrame)/5;
             firstOriginPoint.x += horAmount;
             secondOriginPoint.x += horAmount;
             break;
@@ -235,7 +269,7 @@
             [self.thirdSegment moveToState:doubleSegmentMinusState animated:self.animateToStartPosition];
             
             
-            CGFloat verticalAmount = CGRectGetHeight(self.frame)/3;
+            CGFloat verticalAmount = CGRectGetHeight(self.initialFrame)/3;
             thirdOriginPoint.y -= verticalAmount;
             secondOriginPoint.y += verticalAmount;
             break;
@@ -249,14 +283,14 @@
             [self.secondSegment moveToState:doubleSegmentDownArrow animated:self.animateToStartPosition];
             [self.thirdSegment moveToState:doubleSegmentMinusState animated:self.animateToStartPosition];
             
-            secondOriginPoint.y += self.bounds.size.width/2;
-            thirdOriginPoint.y += self.bounds.size.width/2;
+            secondOriginPoint.y += self.initialFrame.size.width/2;
+            thirdOriginPoint.y += self.initialFrame.size.width/2;
             break;
         case buttonShareType:
             [self.firstSegment moveToState:doubleSegmentDefaultState animated:self.animateToStartPosition];
             [self.secondSegment moveToState:doubleSegmentUpArrow animated:self.animateToStartPosition];
             
-            secondOriginPoint.y -= self.bounds.size.width/2;
+            secondOriginPoint.y -= self.initialFrame.size.width/2;
             break;
         case buttonDownBasicType:
             [self.firstSegment moveToState:doubleSegmentDownArrow animated:self.animateToStartPosition];
@@ -268,7 +302,7 @@
         case buttonDownArrowType:
             [self.firstSegment moveToState:doubleSegmentDefaultState animated:self.animateToStartPosition];
             [self.secondSegment moveToState:doubleSegmentDownArrow animated:self.animateToStartPosition];
-            secondOriginPoint.y += self.bounds.size.width/2;
+            secondOriginPoint.y += self.initialFrame.size.width/2;
             break;
         case buttonUpBasicType:
             [self.firstSegment moveToState:doubleSegmentUpArrow animated:self.animateToStartPosition];
@@ -280,7 +314,7 @@
         case buttonPausedType:
             [self.firstSegment moveToState:doubleSegmentDefaultState animated:self.animateToStartPosition];
             [self.secondSegment moveToState:doubleSegmentDefaultState animated:self.animateToStartPosition];
-            CGFloat horizontalAmount = CGRectGetHeight(self.frame)/5;
+            CGFloat horizontalAmount = CGRectGetHeight(self.initialFrame)/5;
             firstOriginPoint.x -= horizontalAmount;
             secondOriginPoint.x += horizontalAmount;
             break;
