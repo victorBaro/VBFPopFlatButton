@@ -16,7 +16,7 @@ And here you can see them animated:
 
 
 ##How to use it
-Best way is using Cocoapods
+Best way is using CocoaPods
 
     pod 'VBFPopFlatButton'
   
