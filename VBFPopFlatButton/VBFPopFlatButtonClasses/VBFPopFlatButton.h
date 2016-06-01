@@ -43,29 +43,20 @@ typedef NS_ENUM(NSInteger, FlatButtonStyle) {
 @property (nonatomic) FlatButtonStyle currentButtonStyle;
 
 //BackgroundColor property for rounded style button only
-@property (nonatomic, strong) UIColor *roundBackgroundColor;
-
+@property (nonatomic, strong, nonnull) UIColor *roundBackgroundColor;
+@property (nonatomic, strong, nonnull) UIColor *linesColor __deprecated_msg("Deprecated in favor of the tintColor property.");
 @property (nonatomic) CGFloat lineThickness;
 @property (nonatomic) CGFloat lineRadius;
 
-@property (nonatomic, strong) UIColor *linesColor __deprecated_msg("Deprecated in favor of the tintColor property.");
 
-
-
-
-//////////////////////////////
-// DESIGNATED INITIALIZER   //
-//////////////////////////////
-- (instancetype)initWithFrame:(CGRect)frame
+- (nonnull)initWithFrame:(CGRect)frame
                    buttonType:(FlatButtonType)initType
                   buttonStyle:(FlatButtonStyle)bStyle
         animateToInitialState:(BOOL)animateToInitialState; // Feature requested by users -- Set to NO so the button will show initial position type with no animation
 
-////////////////////////////////
 
-
-- (void)setTintColor:(UIColor *)tintColor forState:(UIControlState)state;
-- (UIColor *)tintColorForState:(UIControlState)state;
+- (void)setTintColor:(nonnull UIColor *)tintColor forState:(UIControlState)state;
+- (nonnull UIColor *)tintColorForState:(UIControlState)state;
 - (void)animateToType:(FlatButtonType)finalType;
 
 @end

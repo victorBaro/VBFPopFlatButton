@@ -21,7 +21,7 @@ typedef NS_ENUM(NSInteger, DoubleSegmentState) {
     doubleSegmentLessThanState,         // <
     doubleSegmentMoreThanState,         // >
     doubleSegmentUpArrow,               // ^
-    doubleSegmentDownArrow,             // Before symol upside-down
+    doubleSegmentDownArrow,             // Previous symbol upside-down
     doubleSegmentMinusState,            // --
     doubleSegmentSlashState45,          // \                         /
     doubleSegmentBackSlashState45,      // /
@@ -35,14 +35,14 @@ typedef NS_ENUM(NSInteger, DoubleSegmentState) {
 
 @property (nonatomic) DoubleSegmentState segmentState;
 
-@property (nonatomic, strong) UIColor *lineColor;
+@property (nonatomic, strong, nonnull) UIColor *lineColor;
 @property (nonatomic) CGFloat lineThickness;
 @property (nonatomic) CGFloat lineRadius;
 
-- (instancetype)initWithLength:(CGFloat)length
+- (nonnull)initWithLength:(CGFloat)length
                      thickness:(CGFloat)lineThickness
                         radius:(CGFloat)lineRadius
-                         color:(UIColor *)lineColor
+                         color:(nonnull UIColor *)lineColor
                   initialState:(DoubleSegmentState)initState;
 
 - (void) moveToState:(DoubleSegmentState)finalState animated:(BOOL)animated;

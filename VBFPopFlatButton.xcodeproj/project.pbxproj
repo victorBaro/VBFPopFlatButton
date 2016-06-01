@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		42BE9306C051469DA9559016 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B20D85CE3AC647209454ADCD /* libPods.a */; };
 		C733771019A0370F001896CA /* VBFDoubleSegment.m in Sources */ = {isa = PBXBuildFile; fileRef = C733770D19A0370F001896CA /* VBFDoubleSegment.m */; };
 		C733771119A0370F001896CA /* VBFPopFlatButton.m in Sources */ = {isa = PBXBuildFile; fileRef = C733770F19A0370F001896CA /* VBFPopFlatButton.m */; };
 		C751BD14199FC72900EC7FD6 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C751BD13199FC72900EC7FD6 /* CoreGraphics.framework */; };
@@ -20,8 +19,8 @@
 		C7C49254199FC4A2004CAF5A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7C49252199FC4A2004CAF5A /* Main.storyboard */; };
 		C7C49256199FC4A2004CAF5A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C7C49255199FC4A2004CAF5A /* Images.xcassets */; };
 		C7C49262199FC4A2004CAF5A /* VBFPopFlatButtonTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C7C49261199FC4A2004CAF5A /* VBFPopFlatButtonTests.m */; };
-		CD00BAB21AE2A17B00DEA2B0 /* VBFPopFlatButtonScreenshotTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CD00BAB11AE2A17B00DEA2B0 /* VBFPopFlatButtonScreenshotTests.m */; };
-		FEF1338D55A589D54A60D8A5 /* libPods-VBFPopFlatButtonTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B16CBE0358AF440BAB2722A /* libPods-VBFPopFlatButtonTests.a */; };
+		C7F68D3C1CFE8A190081BF90 /* UIColor+FlatColors.m in Sources */ = {isa = PBXBuildFile; fileRef = C7F68D3B1CFE8A190081BF90 /* UIColor+FlatColors.m */; };
+		E0A93C8A7AB9C5F0A303BADB /* libPods-VBFPopFlatButton.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 144E70BBA70B3F838012CAB2 /* libPods-VBFPopFlatButton.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,12 +34,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		280A596609901B9B967E1F91 /* Pods-VBFPopFlatButtonTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VBFPopFlatButtonTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-VBFPopFlatButtonTests/Pods-VBFPopFlatButtonTests.debug.xcconfig"; sourceTree = "<group>"; };
-		2FAE02D0ECA2DBB579740747 /* Pods-VBFPopFlatButtonTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VBFPopFlatButtonTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-VBFPopFlatButtonTests/Pods-VBFPopFlatButtonTests.release.xcconfig"; sourceTree = "<group>"; };
-		5B16CBE0358AF440BAB2722A /* libPods-VBFPopFlatButtonTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-VBFPopFlatButtonTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		8B0EE6453F7E0F42AE56AEE7 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
-		B11AB6B5686DDD7CC60CEAB7 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
-		B20D85CE3AC647209454ADCD /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		144E70BBA70B3F838012CAB2 /* libPods-VBFPopFlatButton.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-VBFPopFlatButton.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		38BFB03C6FF7DC44EBDE9283 /* Pods-VBFPopFlatButton.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VBFPopFlatButton.release.xcconfig"; path = "Pods/Target Support Files/Pods-VBFPopFlatButton/Pods-VBFPopFlatButton.release.xcconfig"; sourceTree = "<group>"; };
+		50A3F2DF2E18D70E28933BFB /* Pods-VBFPopFlatButton.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VBFPopFlatButton.debug.xcconfig"; path = "Pods/Target Support Files/Pods-VBFPopFlatButton/Pods-VBFPopFlatButton.debug.xcconfig"; sourceTree = "<group>"; };
+		98F2CEB2676E6C98346F4517 /* libPods-VBFPopFlatButtonTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-VBFPopFlatButtonTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C733770C19A0370F001896CA /* VBFDoubleSegment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VBFDoubleSegment.h; path = VBFPopFlatButtonClasses/VBFDoubleSegment.h; sourceTree = "<group>"; };
 		C733770D19A0370F001896CA /* VBFDoubleSegment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VBFDoubleSegment.m; path = VBFPopFlatButtonClasses/VBFDoubleSegment.m; sourceTree = "<group>"; };
 		C733770E19A0370F001896CA /* VBFPopFlatButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VBFPopFlatButton.h; path = VBFPopFlatButtonClasses/VBFPopFlatButton.h; sourceTree = "<group>"; };
@@ -61,7 +58,8 @@
 		C7C4925B199FC4A2004CAF5A /* VBFPopFlatButtonTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VBFPopFlatButtonTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7C49260199FC4A2004CAF5A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C7C49261199FC4A2004CAF5A /* VBFPopFlatButtonTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VBFPopFlatButtonTests.m; sourceTree = "<group>"; };
-		CD00BAB11AE2A17B00DEA2B0 /* VBFPopFlatButtonScreenshotTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VBFPopFlatButtonScreenshotTests.m; sourceTree = "<group>"; };
+		C7F68D3A1CFE8A190081BF90 /* UIColor+FlatColors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+FlatColors.h"; sourceTree = "<group>"; };
+		C7F68D3B1CFE8A190081BF90 /* UIColor+FlatColors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+FlatColors.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,7 +71,7 @@
 				C751BD18199FC73E00EC7FD6 /* Foundation.framework in Frameworks */,
 				C751BD16199FC73400EC7FD6 /* UIKit.framework in Frameworks */,
 				C751BD14199FC72900EC7FD6 /* CoreGraphics.framework in Frameworks */,
-				42BE9306C051469DA9559016 /* libPods.a in Frameworks */,
+				E0A93C8A7AB9C5F0A303BADB /* libPods-VBFPopFlatButton.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,24 +79,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FEF1338D55A589D54A60D8A5 /* libPods-VBFPopFlatButtonTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0414A677DA371B6978142CA2 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				8B0EE6453F7E0F42AE56AEE7 /* Pods.debug.xcconfig */,
-				B11AB6B5686DDD7CC60CEAB7 /* Pods.release.xcconfig */,
-				280A596609901B9B967E1F91 /* Pods-VBFPopFlatButtonTests.debug.xcconfig */,
-				2FAE02D0ECA2DBB579740747 /* Pods-VBFPopFlatButtonTests.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 		67CF9A67DAF8466BA9ECD118 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -106,8 +92,8 @@
 				C751BD17199FC73E00EC7FD6 /* Foundation.framework */,
 				C751BD15199FC73400EC7FD6 /* UIKit.framework */,
 				C751BD13199FC72900EC7FD6 /* CoreGraphics.framework */,
-				B20D85CE3AC647209454ADCD /* libPods.a */,
-				5B16CBE0358AF440BAB2722A /* libPods-VBFPopFlatButtonTests.a */,
+				98F2CEB2676E6C98346F4517 /* libPods-VBFPopFlatButtonTests.a */,
+				144E70BBA70B3F838012CAB2 /* libPods-VBFPopFlatButton.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -130,7 +116,7 @@
 				C7C4925E199FC4A2004CAF5A /* VBFPopFlatButtonTests */,
 				C7C49246199FC4A2004CAF5A /* Products */,
 				67CF9A67DAF8466BA9ECD118 /* Frameworks */,
-				0414A677DA371B6978142CA2 /* Pods */,
+				F2420A9938242DFA58A670C1 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -161,6 +147,8 @@
 		C7C49248199FC4A2004CAF5A /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				C7F68D3A1CFE8A190081BF90 /* UIColor+FlatColors.h */,
+				C7F68D3B1CFE8A190081BF90 /* UIColor+FlatColors.m */,
 				C7C49249199FC4A2004CAF5A /* Info.plist */,
 				C7C4924A199FC4A2004CAF5A /* main.m */,
 			);
@@ -171,7 +159,6 @@
 			isa = PBXGroup;
 			children = (
 				C7C49261199FC4A2004CAF5A /* VBFPopFlatButtonTests.m */,
-				CD00BAB11AE2A17B00DEA2B0 /* VBFPopFlatButtonScreenshotTests.m */,
 				C7C4925F199FC4A2004CAF5A /* Supporting Files */,
 			);
 			path = VBFPopFlatButtonTests;
@@ -185,6 +172,15 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		F2420A9938242DFA58A670C1 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				50A3F2DF2E18D70E28933BFB /* Pods-VBFPopFlatButton.debug.xcconfig */,
+				38BFB03C6FF7DC44EBDE9283 /* Pods-VBFPopFlatButton.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -192,11 +188,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C7C49265199FC4A2004CAF5A /* Build configuration list for PBXNativeTarget "VBFPopFlatButton" */;
 			buildPhases = (
-				36AA18E94F1E4F6E8FDDAB47 /* Check Pods Manifest.lock */,
+				E062BE94E1E7807294970EBF /* 📦 Check Pods Manifest.lock */,
 				C7C49241199FC4A2004CAF5A /* Sources */,
 				C7C49242199FC4A2004CAF5A /* Frameworks */,
 				C7C49243199FC4A2004CAF5A /* Resources */,
-				07FBEC40D78E4D49A2D8C2E5 /* Copy Pods Resources */,
+				6F99A84F6CB7A0CC14E1A5BB /* 📦 Embed Pods Frameworks */,
+				0DC081259666C92D52399934 /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -211,11 +208,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C7C49268199FC4A2004CAF5A /* Build configuration list for PBXNativeTarget "VBFPopFlatButtonTests" */;
 			buildPhases = (
-				5C93E5E7E781872BF995E639 /* Check Pods Manifest.lock */,
 				C7C49257199FC4A2004CAF5A /* Sources */,
 				C7C49258199FC4A2004CAF5A /* Frameworks */,
 				C7C49259199FC4A2004CAF5A /* Resources */,
-				5CBBDF277B9DF560036F34EC /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -284,64 +279,49 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		07FBEC40D78E4D49A2D8C2E5 /* Copy Pods Resources */ = {
+		0DC081259666C92D52399934 /* 📦 Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "📦 Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-VBFPopFlatButton/Pods-VBFPopFlatButton-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		36AA18E94F1E4F6E8FDDAB47 /* Check Pods Manifest.lock */ = {
+		6F99A84F6CB7A0CC14E1A5BB /* 📦 Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			name = "📦 Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-VBFPopFlatButton/Pods-VBFPopFlatButton-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E062BE94E1E7807294970EBF /* 📦 Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		5C93E5E7E781872BF995E639 /* Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		5CBBDF277B9DF560036F34EC /* Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-VBFPopFlatButtonTests/Pods-VBFPopFlatButtonTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -353,6 +333,7 @@
 			files = (
 				C733771119A0370F001896CA /* VBFPopFlatButton.m in Sources */,
 				C7C49251199FC4A2004CAF5A /* ViewController.m in Sources */,
+				C7F68D3C1CFE8A190081BF90 /* UIColor+FlatColors.m in Sources */,
 				C733771019A0370F001896CA /* VBFDoubleSegment.m in Sources */,
 				C7C4924E199FC4A2004CAF5A /* AppDelegate.m in Sources */,
 				C7C4924B199FC4A2004CAF5A /* main.m in Sources */,
@@ -364,7 +345,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				C7C49262199FC4A2004CAF5A /* VBFPopFlatButtonTests.m in Sources */,
-				CD00BAB21AE2A17B00DEA2B0 /* VBFPopFlatButtonScreenshotTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -468,7 +448,7 @@
 		};
 		C7C49266199FC4A2004CAF5A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8B0EE6453F7E0F42AE56AEE7 /* Pods.debug.xcconfig */;
+			baseConfigurationReference = 50A3F2DF2E18D70E28933BFB /* Pods-VBFPopFlatButton.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -481,7 +461,7 @@
 		};
 		C7C49267199FC4A2004CAF5A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B11AB6B5686DDD7CC60CEAB7 /* Pods.release.xcconfig */;
+			baseConfigurationReference = 38BFB03C6FF7DC44EBDE9283 /* Pods-VBFPopFlatButton.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -494,7 +474,6 @@
 		};
 		C7C49269199FC4A2004CAF5A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 280A596609901B9B967E1F91 /* Pods-VBFPopFlatButtonTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -515,7 +494,6 @@
 		};
 		C7C4926A199FC4A2004CAF5A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2FAE02D0ECA2DBB579740747 /* Pods-VBFPopFlatButtonTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
