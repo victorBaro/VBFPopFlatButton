@@ -54,7 +54,7 @@ typedef NS_ENUM(NSInteger, FlatButtonStyle) {
                   buttonStyle:(FlatButtonStyle)bStyle
         animateToInitialState:(BOOL)animateToInitialState; // Feature requested by users -- Set to NO so the button will show initial position type with no animation
 
-
+- (void) commonSetup;
 - (void)setTintColor:(nonnull UIColor *)tintColor forState:(UIControlState)state;
 - (nonnull UIColor *)tintColorForState:(UIControlState)state;
 - (void)animateToType:(FlatButtonType)finalType;
