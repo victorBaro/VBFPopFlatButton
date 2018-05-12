@@ -10,7 +10,7 @@ These are some examples of both types in different states:
 
 And here you can see them animated:
 
-![ButtonDribbble](https://d13yacurqjgara.cloudfront.net/users/381133/screenshots/1696580/vbfpopflatbutton3.gif)
+![ButtonDribbble](https://cdn.dribbble.com/users/381133/screenshots/1696580/vbfpopflatbutton3.gif)
 
 
 ##How to use it
