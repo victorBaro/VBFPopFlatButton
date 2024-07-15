@@ -102,6 +102,11 @@ More types are welcomed :D
 
 For more info, visit my blog [victorbaro.com](http://victorbaro.com/)
 
+## Third Party Bindings
+
+### React Native
+You may now use this library with [React Native](https://github.com/facebook/react-native) via the module [here](https://github.com/prscX/react-native-iconic)
+
 
 ## Apps using this control
 I would love to know which apps in the App Store are using this control. Please, feel free to add your app :)
